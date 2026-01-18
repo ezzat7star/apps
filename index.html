@@ -3,541 +3,977 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأسطورة التي ستغير العالم | موقعي الخارق</title>
+    <title>منصة المستقبل الذكية - ثورة التكنولوجيا العربية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff0080;
-            --dark: #0f0c29;
+            --primary: #1a237e;
+            --secondary: #0d47a1;
+            --accent: #00bcd4;
+            --ai-color: #4caf50;
+            --music-color: #9c27b0;
+            --news-color: #ff9800;
+            --forum-color: #2196f3;
+            --dark: #0a0e2a;
             --light: #f8f9fa;
             --gold: #ffd700;
+            --success: #2ecc71;
         }
         
         body {
-            background: linear-gradient(135deg, var(--dark) 0%, #24243e 50%, var(--dark) 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, #1a237e 100%);
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
         
-        /* تأثيرات النجوم في الخلفية */
-        .stars {
+        /* شريط التنقل المتطور */
+        .navbar {
+            background: rgba(10, 14, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle 5s infinite;
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        .nav-links {
+            display: flex;
+            gap: 30px;
         }
         
-        /* الشريط العلوي الملهم */
-        .hero {
-            padding: 100px 5% 80px;
-            text-align: center;
-            background: linear-gradient(45deg, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
             position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            margin-bottom: 50px;
+        }
+        
+        .nav-link:hover {
+            background: rgba(0, 188, 212, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .nav-link.active {
+            background: var(--accent);
+            color: var(--dark);
+            font-weight: bold;
+        }
+        
+        /* الهيرو */
+        .hero {
+            padding: 180px 5% 100px;
+            text-align: center;
+            background: linear-gradient(rgba(10, 14, 42, 0.9), rgba(26, 35, 126, 0.9)),
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
         
         .hero h1 {
             font-size: 4.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--gold), #ff8a00);
+            margin-bottom: 30px;
+            background: linear-gradient(to right, var(--gold), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-            animation: glow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
         }
         
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
-            to { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 138, 0, 0.7); }
-        }
-        
-        .hero p {
+        .hero-subtitle {
             font-size: 1.8rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 18px 45px;
-            background: linear-gradient(to right, var(--accent), #ff416c);
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 0, 128, 0.6);
-        }
-        
-        .cta-button:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #ff416c, var(--accent));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-        
-        .cta-button:hover:after {
-            opacity: 1;
-        }
-        
-        /* ميزات الموقع الخارقة */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            padding: 80px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            flex: 1;
-            min-width: 300px;
-            max-width: 400px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--accent);
-        }
-        
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .feature-card h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-        
-        .feature-card p {
-            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto 50px;
             line-height: 1.6;
             color: #e0e0e0;
         }
         
-        /* قسم الإحصائيات المذهلة */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+        /* المكونات الرئيسية */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
             padding: 80px 5%;
-            background: rgba(15, 12, 41, 0.8);
-            margin: 80px 0;
-            text-align: center;
-        }
-        
-        .stat-item {
-            padding: 20px;
-        }
-        
-        .stat-number {
-            font-size: 4.5rem;
-            font-weight: bold;
-            background: linear-gradient(to right, var(--gold), #ff8a00);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: block;
-            line-height: 1;
-        }
-        
-        .stat-label {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            color: #ccc;
-        }
-        
-        /* قسم الشهادات */
-        .testimonials {
-            padding: 80px 5%;
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
         }
         
-        .testimonials h2 {
-            text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 60px;
-            color: var(--gold);
-        }
-        
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+        .component-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
             padding: 40px;
-            margin: 30px;
-            border-left: 5px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .testimonial-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-        
-        .testimonial-author {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--gold);
-        }
-        
-        /* الفوتر النهائي */
-        footer {
-            background: rgba(10, 8, 30, 0.95);
-            padding: 60px 5% 30px;
-            margin-top: 100px;
-            text-align: center;
-            border-top: 3px solid var(--primary);
-        }
-        
-        .footer-logo {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 30px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .social-icons {
+            border: 2px solid;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 40px 0;
+            flex-direction: column;
         }
         
-        .social-icon {
-            font-size: 2.5rem;
-            color: var(--light);
+        .component-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .component-card.music {
+            border-color: var(--music-color);
+        }
+        
+        .component-card.news {
+            border-color: var(--news-color);
+        }
+        
+        .component-card.ai {
+            border-color: var(--ai-color);
+        }
+        
+        .component-card.forum {
+            border-color: var(--forum-color);
+        }
+        
+        .component-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .component-icon {
+            font-size: 3.5rem;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .music .component-icon {
+            color: var(--music-color);
+        }
+        
+        .news .component-icon {
+            color: var(--news-color);
+        }
+        
+        .ai .component-icon {
+            color: var(--ai-color);
+        }
+        
+        .forum .component-icon {
+            color: var(--forum-color);
+        }
+        
+        .component-title {
+            font-size: 2.2rem;
+            color: white;
+        }
+        
+        .component-desc {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            flex-grow: 1;
+        }
+        
+        /* مكتبة الموسيقى */
+        .music-player {
+            background: rgba(156, 39, 176, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .track-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+        
+        .track-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
             transition: all 0.3s;
         }
         
-        .social-icon:hover {
+        .track-item:hover {
+            background: rgba(156, 39, 176, 0.2);
+            transform: translateX(-5px);
+        }
+        
+        .track-item.playing {
+            background: rgba(156, 39, 176, 0.3);
+            border-right: 5px solid var(--music-color);
+        }
+        
+        /* قارئ الأخبار */
+        .news-feed {
+            background: rgba(255, 152, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .news-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 0;
+            border-radius: 10px;
+            border-right: 3px solid var(--news-color);
+        }
+        
+        .news-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--news-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        /* خبير الذكاء الاصطناعي */
+        .ai-chat {
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+        
+        .message.user {
+            background: rgba(0, 188, 212, 0.2);
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message.ai {
+            background: rgba(76, 175, 80, 0.2);
+            margin-right: auto;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        /* المنتدى */
+        .forum-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-box {
+            background: rgba(33, 150, 243, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--forum-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* القناة التلفزيونية */
+        .tv-channel {
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 40px 5%;
+            text-align: center;
+        }
+        
+        .tv-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tv-screen {
+            background: #000;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 10px solid #333;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+        }
+        
+        /* الأزرار */
+        .action-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4);
+        }
+        
+        .music .action-button {
+            background: linear-gradient(to right, var(--music-color), #6a1b9a);
+        }
+        
+        .news .action-button {
+            background: linear-gradient(to right, var(--news-color), #ef6c00);
+        }
+        
+        .ai .action-button {
+            background: linear-gradient(to right, var(--ai-color), #1b5e20);
+        }
+        
+        .forum .action-button {
+            background: linear-gradient(to right, var(--forum-color), #0d47a1);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: rgba(5, 10, 35, 0.95);
+            padding: 60px 5% 30px;
+            margin-top: 100px;
+            border-top: 3px solid var(--accent);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
             color: var(--accent);
-            transform: scale(1.3);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-right: 10px;
         }
         
         .copyright {
-            margin-top: 40px;
-            padding-top: 20px;
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 1.1rem;
         }
         
         /* تأثيرات متحركة */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
         
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
         
-        /* التجاوب مع جميع الشاشات */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 3s infinite;
+        }
+        
+        /* التجاوب */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px 5%;
             }
             
-            .hero p {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
                 font-size: 1.4rem;
             }
             
-            .features {
-                flex-direction: column;
-                align-items: center;
+            .components-grid {
+                grid-template-columns: 1fr;
             }
             
-            .feature-card {
-                min-width: 90%;
-            }
-            
-            .stat-number {
-                font-size: 3.5rem;
+            .component-card {
+                min-height: auto;
             }
         }
     </style>
 </head>
 <body>
-    <!-- النجوم المتلألئة -->
-    <div class="stars" id="stars-container"></div>
-    
-    <!-- القسم البطولي -->
-    <header class="hero">
-        <h1 class="floating">🌌 الأسطورة التي طالما انتظرها العالم!</h1>
-        <p>موقع ثوري يجمع بين العبقرية التقنية والجمال البصري ليقدم تجربة لا مثيل لها ستغير مفهومك للويب إلى الأبد!</p>
-        <a href="#features" class="cta-button pulse">
-            <i class="fas fa-rocket"></i> ابدأ الرحلة الأسطورية
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-rocket"></i>
+            منصة المستقبل الذكية
+        </div>
+        <div class="nav-links">
+            <a href="#music" class="nav-link active"><i class="fas fa-music"></i> الموسيقى</a>
+            <a href="#news" class="nav-link"><i class="fas fa-newspaper"></i> الأخبار</a>
+            <a href="#ai" class="nav-link"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a>
+            <a href="#forum" class="nav-link"><i class="fas fa-users"></i> المنتدى</a>
+            <a href="#tv" class="nav-link"><i class="fas fa-tv"></i> القناة الذكية</a>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero">
+        <h1>🚀 ثورة التكنولوجيا العربية الشاملة</h1>
+        <p class="hero-subtitle">
+            منصة متكاملة تجمع بين الذكاء الاصطناعي المتقدم، مكتبة موسيقية ضخمة، 
+            قارئ أخبار ذكي، قناة تلفزيونية تفاعلية، ومنتدى اجتماعي آمن يغنيك عن 
+            فيسبوك وتويتر للأبد!
+        </p>
+        <a href="#components" class="action-button pulse">
+            <i class="fas fa-play"></i> ابدأ الرحلة الآن
         </a>
-    </header>
-    
-    <!-- الميزات الخارقة -->
-    <section class="features" id="features">
-        <div class="feature-card floating" style="animation-delay: 0s;">
-            <div class="feature-icon">
-                <i class="fas fa-bolt"></i>
+    </section>
+
+    <!-- المكونات الرئيسية -->
+    <div class="components-grid" id="components">
+        <!-- مكتبة الموسيقى -->
+        <div class="component-card music" id="music">
+            <div class="component-header">
+                <div class="component-icon">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <h2 class="component-title">مكتبة الموسيقى الأسطورية</h2>
             </div>
-            <h3>سرعة خارقة</h3>
-            <p>أسرع من البرق! تحميل فوري مع تقنيات متطورة تضمن تجربة سلسة بدون أي تأخير.</p>
+            <p class="component-desc">
+                أكبر مكتبة موسيقية عربية وعالمية، مع خوارزميات ذكية تفهم ذوقك 
+                وتقدم لك مقترحات تناسب مزاجك. استمع لأكثر من مليون مقطع موسيقي 
+                بجودة استديو احترافية.
+            </p>
+            
+            <div class="music-player">
+                <h3 style="color: var(--music-color); margin-bottom: 15px;">
+                    <i class="fas fa-play-circle"></i> تشغيل حي
+                </h3>
+                <div class="track-list">
+                    <div class="track-item playing">
+                        <span>🎵 أغنية الثورة - أم كلثوم</span>
+                        <span>03:45</span>
+                    </div>
+                    <div class="track-item">
+                        <span>🎵 نوستالجيا - فيروز</span>
+                        <span>04:20</span>
+                    </div>
+                    <div class="track-item">
+                        <span>🎶 موسيقى حماسية - تأليف خاص</span>
+                        <span>05:15</span>
+                    </div>
+                    <div class="track-item">
+                        <span>🎵 صوت الطبيعة - مهدئ</span>
+                        <span>06:30</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="action-button" style="padding: 10px 20px;">
+                        <i class="fas fa-play"></i> تشغيل
+                    </button>
+                    <button class="action-button" style="padding: 10px 20px;">
+                        <i class="fas fa-pause"></i> إيقاف
+                    </button>
+                </div>
+            </div>
+            
+            <a href="#" class="action-button">
+                <i class="fas fa-music"></i> تصفح المكتبة الكاملة
+            </a>
         </div>
-        
-        <div class="feature-card floating" style="animation-delay: 0.5s;">
-            <div class="feature-icon">
-                <i class="fas fa-shield-alt"></i>
+
+        <!-- قارئ الأخبار الذكي -->
+        <div class="component-card news" id="news">
+            <div class="component-header">
+                <div class="component-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h2 class="component-title">قارئ الأخبار الذكي</h2>
             </div>
-            <h3>حماية أسطورية</h3>
-            <p>جدران حماية غير قابلة للاختراق مع تشفير عسكري المستوى يحمي بياناتك مثل كنوز القصور.</p>
+            <p class="component-desc">
+                نظام ذكي يبحث في آلاف المصابع ويقدم لك أهم الأخبار مصنفة حسب 
+                اهتماماتك. مع تحليل المشاعر وتلخيص تلقائي وترجمة فورية لأي لغة.
+            </p>
+            
+            <div class="news-feed">
+                <div class="news-item">
+                    <span class="news-category">💰 اقتصاد</span>
+                    <h4>ارتفاع المؤشرات العربية بنسبة 15% هذا الشهر</h4>
+                    <p>أظهرت التقارير نمواً قياسياً في الأسواق العربية...</p>
+                    <small>منذ ساعتين</small>
+                </div>
+                <div class="news-item">
+                    <span class="news-category">🔬 تكنولوجيا</span>
+                    <h4>اختراق علمي: معالج جديد أسرع 100 مرة</h4>
+                    <p>شركة ناشئة تعلن عن معالج كمي يحطم الأرقام القياسية...</p>
+                    <small>منذ 5 ساعات</small>
+                </div>
+                <div class="news-item">
+                    <span class="news-category">🎨 ثقافة</span>
+                    <h4>مهرجان القاهرة السينمائي يعلن عن أفلامه المنافسة</h4>
+                    <p>45 فيلماً من 30 دولة تتنافس على الجوائز الرئيسية...</p>
+                    <small>منذ يوم</small>
+                </div>
+                <div class="news-item">
+                    <span class="news-category">⚽ رياضة</span>
+                    <h4>فريق مصر يتأهل لكأس العالم 2026</h4>
+                    <p>انتصار تاريخي بثلاثية نظيفة في المباراة الحاسمة...</p>
+                    <small>منذ يومين</small>
+                </div>
+            </div>
+            
+            <a href="#" class="action-button">
+                <i class="fas fa-book-reader"></i> اقرأ المزيد من الأخبار
+            </a>
         </div>
-        
-        <div class="feature-card floating" style="animation-delay: 1s;">
-            <div class="feature-icon">
-                <i class="fas fa-infinity"></i>
+
+        <!-- خبير الذكاء الاصطناعي -->
+        <div class="component-card ai" id="ai">
+            <div class="component-header">
+                <div class="component-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2 class="component-title">خبير الذكاء الاصطناعي</h2>
             </div>
-            <h3>أداء لا نهائي</h3>
-            <p>مصمم لينمو معك إلى ما لا نهاية، يتكيف مع أي عبء عمل دون أن يتأثر أداؤه الأسطوري.</p>
+            <p class="component-desc">
+                مساعد ذكي شخصي يتحدث العربية بطلاقة، يجيب على أسئلتك، 
+                يساعدك في البحث، يقدم نصائح مخصصة، ويكتب لك النصوص باحترافية.
+            </p>
+            
+            <div class="ai-chat">
+                <div class="chat-messages">
+                    <div class="message ai">
+                        مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟
+                    </div>
+                    <div class="message user">
+                        أخبرني عن أهم التطورات التكنولوجية اليوم
+                    </div>
+                    <div class="message ai">
+                        هناك 3 تطورات رئيسية: 1) معالج كمي جديد 2) بطارية تدوم أسبوعاً 3) شبكة 6G تجريبية
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" placeholder="اكتب سؤالك هنا...">
+                    <button class="action-button" style="padding: 10px 25px;">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <a href="#" class="action-button">
+                <i class="fas fa-comments"></i> تحدث مع الخبير الآن
+            </a>
+        </div>
+
+        <!-- منتدى مصر الإخبارية -->
+        <div class="component-card forum" id="forum">
+            <div class="component-header">
+                <div class="component-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="component-title">منتدى مصر الإخبارية</h2>
+            </div>
+            <p class="component-desc">
+                منصة اجتماعية آمنة 100%، خالية من الأخبار الكاذبة والمحتوى المسيء. 
+                مجتمع مثقف يتبادل الأفكار البناءة ويناقش القضايا المهمة باحترام.
+            </p>
+            
+            <div class="forum-stats">
+                <div class="stat-box">
+                    <span class="stat-number">125K+</span>
+                    <span class="stat-label">عضو نشط</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">45K+</span>
+                    <span class="stat-label">موضوع نشط</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">99.8%</span>
+                    <span class="stat-label">رضا الأعضاء</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">محتوى مسيء</span>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <h4 style="color: var(--forum-color); margin-bottom: 10px;">
+                    <i class="fas fa-fire"></i> المواضيع الساخنة:
+                </h4>
+                <ul style="list-style: none; color: #e0e0e0;">
+                    <li style="padding: 8px; border-right: 3px solid var(--forum-color); margin: 5px 0;">
+                        📈 مستقبل الاقتصاد المصري 2030
+                    </li>
+                    <li style="padding: 8px; border-right: 3px solid var(--forum-color); margin: 5px 0;">
+                        🔬 الثورة التكنولوجية في التعليم
+                    </li>
+                    <li style="padding: 8px; border-right: 3px solid var(--forum-color); margin: 5px 0;">
+                        🎨 إحياء التراث الثقافي العربي
+                    </li>
+                </ul>
+            </div>
+            
+            <a href="#" class="action-button">
+                <i class="fas fa-sign-in-alt"></i> انضم للمجتمع الآمن
+            </a>
+        </div>
+    </div>
+
+    <!-- القناة التلفزيونية الذكية -->
+    <section class="tv-channel" id="tv">
+        <div class="tv-container">
+            <h2 style="font-size: 3rem; color: #ff3333; margin-bottom: 30px;">
+                <i class="fas fa-tv"></i> القناة الذكية المباشرة
+            </h2>
+            <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 40px; color: #e0e0e0;">
+                بث حي 24/7 مع محتوى تفاعلي، تحليلات ذكية، برامج حوارية مباشرة، 
+                ونظام تصويت فوري للمشاهدين. الثورة التلفزيونية تبدأ من هنا!
+            </p>
+            
+            <div class="tv-screen">
+                <div style="text-align: center;">
+                    <div style="font-size: 5rem; color: #ff3333; margin-bottom: 20px;">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">
+                        البث المباشر الآن
+                    </h3>
+                    <p style="font-size: 1.8rem; color: var(--gold);">
+                        برنامج "مستقبل التكنولوجيا" مع ضيوف خاصين
+                    </p>
+                    <div style="margin-top: 30px; display: flex; gap: 20px; justify-content: center;">
+                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
+                            <span class="stat-number">45.2K</span>
+                            <span class="stat-label">مشاهد مباشر</span>
+                        </div>
+                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
+                            <span class="stat-number">89%</span>
+                            <span class="stat-label">تفاعل إيجابي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <button class="action-button" style="background: linear-gradient(to right, #ff3333, #cc0000);">
+                    <i class="fas fa-play"></i> مشاهدة مباشرة
+                </button>
+                <button class="action-button" style="background: linear-gradient(to right, #666, #333);">
+                    <i class="fas fa-comments"></i> غرفة المحادثة
+                </button>
+                <button class="action-button" style="background: linear-gradient(to right, #4CAF50, #2E7D32);">
+                    <i class="fas fa-vote-yea"></i> التصويت المباشر
+                </button>
+            </div>
         </div>
     </section>
-    
-    <!-- إحصائيات مذهلة -->
-    <section class="stats">
-        <div class="stat-item">
-            <span class="stat-number" id="counter1">0</span>
-            <span class="stat-label">مستخدم منبهر</span>
-        </div>
-        
-        <div class="stat-item">
-            <span class="stat-number" id="counter2">0</span>
-            <span class="stat-label">ثانية تحميل</span>
-        </div>
-        
-        <div class="stat-item">
-            <span class="stat-number" id="counter3">0</span>
-            <span class="stat-label">نسبة رضا</span>
-        </div>
-        
-        <div class="stat-item">
-            <span class="stat-number" id="counter4">0</span>
-            <span class="stat-label">جائزة عالمية</span>
-        </div>
-    </section>
-    
-    <!-- شهادات الموقع -->
-    <section class="testimonials">
-        <h2>ماذا قال عمالقة التكنولوجيا عنا؟</h2>
-        
-        <div class="testimonial-card">
-            <p class="testimonial-text">"لقد شاهدت آلاف المواقع في حياتي، ولكن هذا الموقع مختلف تماماً. إنه ليس موقعاً، إنه تحفة فنية رقمية ستغير صناعة الويب إلى الأبد!"</p>
-            <p class="testimonial-author">- إيلون ماسك</p>
-        </div>
-        
-        <div class="testimonial-card">
-            <p class="testimonial-text">"عندما رأيت هذا الموقع لأول مرة، ظننت أنني أحلم! الجمع بين الأداء الخارق والتصميم الساحر شيء لم أعتقد أنه ممكن. هذا هو مستقبل الويب!"</p>
-            <p class="testimonial-author">- تيم كوك</p>
-        </div>
-        
-        <div class="testimonial-card">
-            <p class="testimonial-text">"كخبير في تجربة المستخدم لأكثر من 20 عاماً، أعلن أن هذا الموقع هو الكمال المطلق. كل بكسل في مكانه الصحيح، كل حركة لها معنى. تحفة!"</p>
-            <p class="testimonial-author">- د. أحمد التكنولوجي</p>
-        </div>
-    </section>
-    
+
     <!-- الفوتر -->
     <footer>
-        <div class="footer-logo">🚀 LEGENDARY SITE</div>
-        <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 30px; color: #ddd;">
-            انضم إلى الثورة الأسطورية وكن جزءاً من المستقبل الذي يتحول إلى حقيقة!
-        </p>
-        
-        <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>منصة المستقبل الذكية</h3>
+                <p style="color: #ccc; line-height: 1.6;">
+                    ثورة تكنولوجية عربية شاملة، تجمع بين الإبداع والأمان 
+                    والذكاء الاصطناعي لخلق تجربة رقمية لا مثيل لها.
+                </p>
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <div style="font-size: 2rem; color: var(--accent);">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <div style="font-size: 2rem; color: var(--accent);">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div style="font-size: 2rem; color: var(--accent);">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#music"><i class="fas fa-arrow-left"></i> مكتبة الموسيقى</a></li>
+                    <li><a href="#news"><i class="fas fa-arrow-left"></i> قارئ الأخبار</a></li>
+                    <li><a href="#ai"><i class="fas fa-arrow-left"></i> الذكاء الاصطناعي</a></li>
+                    <li><a href="#forum"><i class="fas fa-arrow-left"></i> المنتدى الاجتماعي</a></li>
+                    <li><a href="#tv"><i class="fas fa-arrow-left"></i> القناة الذكية</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تواصل معنا</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-envelope"></i> info@future-platform.com</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 100 123 4567</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>حمل التطبيق</h3>
+                <p style="color: #ccc; margin-bottom: 20px;">
+                    حمل تطبيقنا الآن واستمتع بالتجربة الكاملة على هاتفك
+                </p>
+                <div style="display: flex; gap: 10px;">
+                    <button class="action-button" style="padding: 12px 25px;">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </button>
+                    <button class="action-button" style="padding: 12px 25px;">
+                        <i class="fab fa-app-store"></i> App Store
+                    </button>
+                </div>
+            </div>
         </div>
-        
-        <a href="#" class="cta-button" style="margin-top: 30px;">
-            <i class="fas fa-crown"></i> انضم إلى النخبة الأسطورية
-        </a>
         
         <div class="copyright">
-            © 2023 الموقع الأسطوري الخارق. جميع الحقوق محفوظة. صمم بقلب ناري وعقل عبقري.
+            © 2024 منصة المستقبل الذكية - جميع الحقوق محفوظة | 
+            تصميم وتطوير بفخر في الوطن العربي | الثورة التكنولوجية تبدأ من هنا!
         </div>
     </footer>
-    
+
     <script>
-        // إنشاء النجوم المتلألئة
-        function createStars() {
-            const starsContainer = document.getElementById('stars-container');
-            for (let i = 0; i < 200; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
+        // تنشيط التنقل
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
                 
-                // مواقع وأحجام عشوائية
-                const size = Math.random() * 3 + 1;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const delay = Math.random() * 5;
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // تشغيل الموسيقى التفاعلي
+        document.querySelectorAll('.track-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.track-item').forEach(i => i.classList.remove('playing'));
+                this.classList.add('playing');
                 
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.left = `${posX}%`;
-                star.style.top = `${posY}%`;
-                star.style.animationDelay = `${delay}s`;
+                // محاكاة تشغيل الموسيقى
+                const songName = this.querySelector('span').textContent;
+                showNotification(`🎵 الآن تشغيل: ${songName}`);
+            });
+        });
+        
+        // محاكاة الدردشة مع الذكاء الاصطناعي
+        const chatInput = document.querySelector('.chat-input input');
+        const chatMessages = document.querySelector('.chat-messages');
+        
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && this.value.trim()) {
+                const userMessage = this.value;
                 
-                starsContainer.appendChild(star);
+                // إضافة رسالة المستخدم
+                const userMsgDiv = document.createElement('div');
+                userMsgDiv.className = 'message user';
+                userMsgDiv.textContent = userMessage;
+                chatMessages.appendChild(userMsgDiv);
+                
+                this.value = '';
+                
+                // محاكاة رد الذكاء الاصطناعي
+                setTimeout(() => {
+                    const aiResponses = [
+                        "هذا سؤال ممتاز! بناءً على تحليلي، يمكنني القول أن...",
+                        "شكراً لسؤالك. لدي المعلومات التالية حول هذا الموضوع...",
+                        "أعتقد أن هذا يحتاج إلى بعض التوضيح. اسمح لي أن أشرح...",
+                        "حسناً، دعني أفكر في هذا. بناءً على البيانات المتاحة...",
+                        "هذا موضوع شيق! إليك ما وجدته من مصادر موثوقة..."
+                    ];
+                    
+                    const aiMsgDiv = document.createElement('div');
+                    aiMsgDiv.className = 'message ai';
+                    aiMsgDiv.textContent = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+                    chatMessages.appendChild(aiMsgDiv);
+                    
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+                
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+        
+        // تحديث عدد المشاهدين بشكل حي
+        function updateViewers() {
+            const viewersElement = document.querySelector('.tv-channel .stat-number');
+            if (viewersElement) {
+                let viewers = parseInt(viewersElement.textContent.replace('K', '000')) || 45200;
+                viewers += Math.floor(Math.random() * 100) - 40;
+                if (viewers < 45000) viewers = 45000;
+                if (viewers > 50000) viewers = 50000;
+                viewersElement.textContent = (viewers / 1000).toFixed(1) + 'K';
             }
         }
         
-        // عداد الإحصائيات المتحرك
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            const values = [95427, 0.8, 99.9, 42];
-            const increments = [500, 0.05, 0.5, 1];
-            const duration = 2000;
-            
-            counters.forEach((counter, index) => {
-                let start = 0;
-                const end = values[index];
-                const increment = increments[index];
-                const stepTime = Math.abs(Math.floor(duration / (end / increment)));
-                
-                const timer = setInterval(() => {
-                    start += increment;
-                    if (index === 1 || index === 2) {
-                        counter.textContent = start.toFixed(1) + (index === 1 ? '' : '%');
-                    } else {
-                        counter.textContent = Math.floor(start);
-                    }
-                    
-                    if (start >= end) {
-                        counter.textContent = end + (index === 1 ? '' : (index === 2 ? '%' : ''));
-                        clearInterval(timer);
-                    }
-                }, stepTime);
-            });
-        }
-        
-        // تأثيرات عند التمرير
-        function handleScrollAnimations() {
-            const cards = document.querySelectorAll('.feature-card, .testimonial-card');
-            
-            cards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (cardTop < windowHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        }
-        
-        // تهيئة كل التأثيرات عند تحميل الصفحة
-        window.addEventListener('load', () => {
-            createStars();
-            animateCounters();
-            
-            // إضافة كلاس للتأثيرات الأولية
-            document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'opacity 0.8s, transform 0.8s';
-            });
+        // إشعارات
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: var(--accent);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
             
             setTimeout(() => {
-                handleScrollAnimations();
-            }, 500);
-        });
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
         
-        // تفعيل تأثيرات التمرير
-        window.addEventListener('scroll', handleScrollAnimations);
+        // إضافة أنماط للرسوم المتحركة
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
         
-        // تأثيرات عند المرور على الأزرار
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px) scale(1.05)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+        // تحديثات حية
+        setInterval(updateViewers, 5000);
+        
+        // بدء الرحلة
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showNotification('🚀 مرحباً بك في منصة المستقبل الذكية! ابدأ رحلتك الآن.');
+            }, 1000);
         });
     </script>
 </body>
