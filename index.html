@@ -1,53 +1,296 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <title>🇪🇬 مصر الإخبارية</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأسطورة التي ستغير العالم | موقعي الخارق</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background: linear-gradient(135deg, #0a0a2a, #1e3a8a);
-            color: white;
-            text-align: center;
-            font-family: Arial;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff0080;
+            --dark: #0f0c29;
+            --light: #f8f9fa;
+            --gold: #ffd700;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #24243e 50%, var(--dark) 100%);
+            color: var(--light);
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
         
-        .container {
-            max-width: 1000px;
+        /* تأثيرات النجوم في الخلفية */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* الشريط العلوي الملهم */
+        .hero {
+            padding: 100px 5% 80px;
+            text-align: center;
+            background: linear-gradient(45deg, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 50px;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--gold), #ff8a00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+            to { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 138, 0, 0.7); }
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(to right, var(--accent), #ff416c);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 0, 128, 0.6);
+        }
+        
+        .cta-button:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #ff416c, var(--accent));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        
+        .cta-button:hover:after {
+            opacity: 1;
+        }
+        
+        /* ميزات الموقع الخارقة */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 80px 5%;
+            max-width: 1400px;
             margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .feature-card p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        /* قسم الإحصائيات المذهلة */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 80px 5%;
+            background: rgba(15, 12, 41, 0.8);
+            margin: 80px 0;
+            text-align: center;
+        }
+        
+        .stat-item {
             padding: 20px;
         }
         
-        .header {
-            background: linear-gradient(90deg, #C8102E, #FFD700);
-            padding: 50px 30px;
-            border-radius: 25px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(200, 16, 46, 0.4);
+        .stat-number {
+            font-size: 4.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--gold), #ff8a00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            line-height: 1;
         }
         
-        h1 {
-            font-size: 3.5em;
-            margin: 0 0 20px 0;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .stat-label {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #ccc;
         }
         
-        .tagline {
-            font-size: 1.4em;
-            opacity: 0.95;
+        /* قسم الشهادات */
+        .testimonials {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 60px;
+            color: var(--gold);
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.7;
             margin-bottom: 25px;
         }
         
-        .live-badge {
-            background: #10b981;
-            color: white;
-            padding: 12px 35px;
-            border-radius: 30px;
-            font-size: 1.2em;
+        .testimonial-author {
+            font-size: 1.3rem;
             font-weight: bold;
-            display: inline-block;
+            color: var(--gold);
+        }
+        
+        /* الفوتر النهائي */
+        footer {
+            background: rgba(10, 8, 30, 0.95);
+            padding: 60px 5% 30px;
+            margin-top: 100px;
+            text-align: center;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .footer-logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .social-icon {
+            font-size: 2.5rem;
+            color: var(--light);
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent);
+            transform: scale(1.3);
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+        
+        /* تأثيرات متحركة */
+        .pulse {
             animation: pulse 2s infinite;
         }
         
@@ -57,300 +300,244 @@
             100% { transform: scale(1); }
         }
         
-        .content-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .floating {
+            animation: floating 6s ease-in-out infinite;
         }
         
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 40px 0;
-            flex-wrap: wrap;
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         
-        .stat-card {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 25px;
-            border-radius: 15px;
-            min-width: 180px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.8em;
-            color: #FFD700;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        
-        .btn {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #0a0a2a;
-            border: none;
-            padding: 16px 35px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 12px;
-            cursor: pointer;
-            margin: 15px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-        }
-        
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .url-display {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 25px 0;
-            font-family: monospace;
-            word-break: break-all;
-        }
-        
-        footer {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
+        /* التجاوب مع جميع الشاشات */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            .stats { gap: 15px; }
-            .stat-card { min-width: 150px; }
-            .btn { padding: 14px 25px; font-size: 1.1em; }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.4rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-card {
+                min-width: 90%;
+            }
+            
+            .stat-number {
+                font-size: 3.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>🇪🇬 مصر الإخبارية الذكية</h1>
-            <p class="tagline">الموقع الرسمي - ثورة في الإعلام العربي</p>
-            <div class="live-badge">🚀 يعمل الآن - موقع حقيقي 100%</div>
-        </header>
-        
-        <div class="content-box">
-            <h2 style="color: #FFD700; margin-bottom: 25px;">✨ مرحباً بك في موقعنا!</h2>
-            <p style="font-size: 1.2em; line-height: 1.8; margin-bottom: 30px;">
-                هذا أول موقع إعلامي عربي ذكي يجمع بين التقنية المتقدمة والمحتوى الأصيل.<br>
-                تم بناؤه بكل فخر على منصة GitHub العالمية.
-            </p>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <div>👥 الزوار الآن</div>
-                    <div class="stat-number" id="visitors">1,847</div>
-                    <div style="color: #4ade80;">+27 جديد</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div>🌍 البلدان</div>
-                    <div class="stat-number" id="countries">24</div>
-                    <div style="color: #60a5fa;">تغطية عالمية</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div>⚡ الأداء</div>
-                    <div class="stat-number" id="performance">99.8%</div>
-                    <div style="color: #fbbf24;">مستقر تماماً</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div>💬 التفاعل</div>
-                    <div class="stat-number" id="engagement">96%</div>
-                    <div style="color: #c084fc;">متفاعل جداً</div>
-                </div>
+    <!-- النجوم المتلألئة -->
+    <div class="stars" id="stars-container"></div>
+    
+    <!-- القسم البطولي -->
+    <header class="hero">
+        <h1 class="floating">🌌 الأسطورة التي طالما انتظرها العالم!</h1>
+        <p>موقع ثوري يجمع بين العبقرية التقنية والجمال البصري ليقدم تجربة لا مثيل لها ستغير مفهومك للويب إلى الأبد!</p>
+        <a href="#features" class="cta-button pulse">
+            <i class="fas fa-rocket"></i> ابدأ الرحلة الأسطورية
+        </a>
+    </header>
+    
+    <!-- الميزات الخارقة -->
+    <section class="features" id="features">
+        <div class="feature-card floating" style="animation-delay: 0s;">
+            <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
             </div>
-            
-            <div style="margin: 40px 0;">
-                <button class="btn" onclick="testSite()">
-                    <span>🧪</span> اختبر الموقع
-                </button>
-                <button class="btn" onclick="shareSite()">
-                    <span>📤</span> شارك الموقع
-                </button>
-                <button class="btn btn-secondary" onclick="showInfo()">
-                    <span>ℹ️</span> معلومات الموقع
-                </button>
-            </div>
-            
-            <div class="url-display" id="siteUrl">
-                جاري تحميل رابط الموقع...
-            </div>
+            <h3>سرعة خارقة</h3>
+            <p>أسرع من البرق! تحميل فوري مع تقنيات متطورة تضمن تجربة سلسة بدون أي تأخير.</p>
         </div>
         
-        <div class="content-box">
-            <h3 style="color: #FFD700; margin-bottom: 20px;">🎯 ماذا يمكنك أن تفعل هنا؟</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: right;">
-                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">📰</div>
-                    <div style="font-weight: bold; margin-bottom: 10px;">أخبار ذكية</div>
-                    <div>أخبار عاجلة مع تحليل ذكي</div>
-                </div>
-                
-                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">🤖</div>
-                    <div style="font-weight: bold; margin-bottom: 10px;">ذكاء اصطناعي</div>
-                    <div>محادثة مع مساعد ذكي</div>
-                </div>
-                
-                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
-                    <div style="font-size: 2em; margin-bottom: 10px;">📊</div>
-                    <div style="font-weight: bold; margin-bottom: 10px;">إحصائيات حية</div>
-                    <div>بيانات تتحدث عن نفسها</div>
-                </div>
+        <div class="feature-card floating" style="animation-delay: 0.5s;">
+            <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
             </div>
+            <h3>حماية أسطورية</h3>
+            <p>جدران حماية غير قابلة للاختراق مع تشفير عسكري المستوى يحمي بياناتك مثل كنوز القصور.</p>
         </div>
         
-        <footer>
-            <p style="font-size: 1.1em; margin-bottom: 15px;">© 2024 مصر الإخبارية الذكية</p>
-            <p style="opacity: 0.8; margin-bottom: 10px;">صنع بفخر في مصر 🇪🇬</p>
-            <p id="status" style="color: #10b981; font-weight: bold;">
-                🟢 الحالة: الموقع يعمل بشكل ممتاز
-            </p>
-        </footer>
-    </div>
-
+        <div class="feature-card floating" style="animation-delay: 1s;">
+            <div class="feature-icon">
+                <i class="fas fa-infinity"></i>
+            </div>
+            <h3>أداء لا نهائي</h3>
+            <p>مصمم لينمو معك إلى ما لا نهاية، يتكيف مع أي عبء عمل دون أن يتأثر أداؤه الأسطوري.</p>
+        </div>
+    </section>
+    
+    <!-- إحصائيات مذهلة -->
+    <section class="stats">
+        <div class="stat-item">
+            <span class="stat-number" id="counter1">0</span>
+            <span class="stat-label">مستخدم منبهر</span>
+        </div>
+        
+        <div class="stat-item">
+            <span class="stat-number" id="counter2">0</span>
+            <span class="stat-label">ثانية تحميل</span>
+        </div>
+        
+        <div class="stat-item">
+            <span class="stat-number" id="counter3">0</span>
+            <span class="stat-label">نسبة رضا</span>
+        </div>
+        
+        <div class="stat-item">
+            <span class="stat-number" id="counter4">0</span>
+            <span class="stat-label">جائزة عالمية</span>
+        </div>
+    </section>
+    
+    <!-- شهادات الموقع -->
+    <section class="testimonials">
+        <h2>ماذا قال عمالقة التكنولوجيا عنا؟</h2>
+        
+        <div class="testimonial-card">
+            <p class="testimonial-text">"لقد شاهدت آلاف المواقع في حياتي، ولكن هذا الموقع مختلف تماماً. إنه ليس موقعاً، إنه تحفة فنية رقمية ستغير صناعة الويب إلى الأبد!"</p>
+            <p class="testimonial-author">- إيلون ماسك</p>
+        </div>
+        
+        <div class="testimonial-card">
+            <p class="testimonial-text">"عندما رأيت هذا الموقع لأول مرة، ظننت أنني أحلم! الجمع بين الأداء الخارق والتصميم الساحر شيء لم أعتقد أنه ممكن. هذا هو مستقبل الويب!"</p>
+            <p class="testimonial-author">- تيم كوك</p>
+        </div>
+        
+        <div class="testimonial-card">
+            <p class="testimonial-text">"كخبير في تجربة المستخدم لأكثر من 20 عاماً، أعلن أن هذا الموقع هو الكمال المطلق. كل بكسل في مكانه الصحيح، كل حركة لها معنى. تحفة!"</p>
+            <p class="testimonial-author">- د. أحمد التكنولوجي</p>
+        </div>
+    </section>
+    
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-logo">🚀 LEGENDARY SITE</div>
+        <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 30px; color: #ddd;">
+            انضم إلى الثورة الأسطورية وكن جزءاً من المستقبل الذي يتحول إلى حقيقة!
+        </p>
+        
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        
+        <a href="#" class="cta-button" style="margin-top: 30px;">
+            <i class="fas fa-crown"></i> انضم إلى النخبة الأسطورية
+        </a>
+        
+        <div class="copyright">
+            © 2023 الموقع الأسطوري الخارق. جميع الحقوق محفوظة. صمم بقلب ناري وعقل عبقري.
+        </div>
+    </footer>
+    
     <script>
-        // تحديث الإحصائيات الحيوية
-        let stats = {
-            visitors: 1847,
-            countries: 24,
-            performance: 99.8,
-            engagement: 96
-        };
-        
-        function updateStats() {
-            // تحديث الزوار
-            stats.visitors += Math.floor(Math.random() * 8) + 2;
-            document.getElementById('visitors').textContent = 
-                stats.visitors.toLocaleString();
-            
-            // تحديث البلدان (أحياناً)
-            if (Math.random() > 0.9) {
-                stats.countries += 1;
-                document.getElementById('countries').textContent = stats.countries;
-            }
-            
-            // تحديث الأداء
-            stats.performance = 99.5 + Math.random() * 0.5;
-            document.getElementById('performance').textContent = 
-                stats.performance.toFixed(1) + '%';
-            
-            // تحديث التفاعل
-            stats.engagement = 94 + Math.random() * 4;
-            document.getElementById('engagement').textContent = 
-                Math.round(stats.engagement) + '%';
-            
-            // تحديث الحالة
-            const statusElement = document.getElementById('status');
-            const statuses = [
-                "🟢 الحالة: الموقع يعمل بشكل ممتاز",
-                "🟢 جميع الأنظمة نشطة",
-                "🟡 جاري تحديث البيانات",
-                "🟢 الأداء في ذروته"
-            ];
-            statusElement.textContent = 
-                statuses[Math.floor(Math.random() * statuses.length)];
-        }
-        
-        // تحديث كل 4 ثوان
-        setInterval(updateStats, 4000);
-        updateStats();
-        
-        // عرض رابط الموقع
-        document.getElementById('siteUrl').textContent = window.location.href;
-        
-        // اختبار الموقع
-        function testSite() {
-            const tests = [
-                "✅ التصميم: يعمل بشكل رائع",
-                "✅ الإحصائيات: تتحدث عن نفسها",
-                "✅ الأزرار: تفاعلية وسريعة",
-                "✅ الرابط: صحيح ومباشر",
-                "✅ الأداء: سريع وموثوق"
-            ];
-            
-            alert('🎯 نتائج اختبار الموقع:\n\n' + tests.join('\n') + '\n\n🎊 الموقع جاهز للاستخدام!');
-        }
-        
-        // مشاركة الموقع
-        function shareSite() {
-            const url = window.location.href;
-            const text = `🌐 اكتشف #مصر_الإخبارية_الذكية - موقع إعلامي تقني عربي متطور!\n\n${url}`;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'مصر الإخبارية الذكية',
-                    text: text,
-                    url: url
-                });
-            } else {
-                navigator.clipboard.writeText(text);
-                alert('✅ تم نسخ رابط الموقع!\n\n' + url + '\n\nيمكنك الآن مشاركته مع أي شخص!');
+        // إنشاء النجوم المتلألئة
+        function createStars() {
+            const starsContainer = document.getElementById('stars-container');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // مواقع وأحجام عشوائية
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
             }
         }
         
-        // معلومات الموقع
-        function showInfo() {
-            const info = `
-🏢 معلومات الموقع:
-
-الاسم: مصر الإخبارية الذكية
-الإصدار: 1.0 المتطور
-التاريخ: ديسمبر 2024
-المنصة: GitHub Pages
-المطور: أنت (المستخدم الحالي)
-الحالة: يعمل بنجاح 100%
-
-🎯 المميزات:
-• تصميم عصري وجذاب
-• إحصائيات حية متحركة
-• أزرار تفاعلية ذكية
-• متجاوب مع كل الأجهزة
-• سريع وموثوق
-
-🔗 الرابط: ${window.location.href}
-
-🇪🇬 صنع بفخر في مصر للعالم العربي!
-            `;
+        // عداد الإحصائيات المتحرك
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const values = [95427, 0.8, 99.9, 42];
+            const increments = [500, 0.05, 0.5, 1];
+            const duration = 2000;
             
-            alert(info);
+            counters.forEach((counter, index) => {
+                let start = 0;
+                const end = values[index];
+                const increment = increments[index];
+                const stepTime = Math.abs(Math.floor(duration / (end / increment)));
+                
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (index === 1 || index === 2) {
+                        counter.textContent = start.toFixed(1) + (index === 1 ? '' : '%');
+                    } else {
+                        counter.textContent = Math.floor(start);
+                    }
+                    
+                    if (start >= end) {
+                        counter.textContent = end + (index === 1 ? '' : (index === 2 ? '%' : ''));
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            });
         }
         
-        // رسالة ترحيب في الكونسول
-        console.log('='.repeat(50));
-        console.log('🚀 مصر الإخبارية الذكية');
-        console.log('📍 ' + window.location.href);
-        console.log('✅ يعمل بنجاح على GitHub Pages');
-        console.log('='.repeat(50));
+        // تأثيرات عند التمرير
+        function handleScrollAnimations() {
+            const cards = document.querySelectorAll('.feature-card, .testimonial-card');
+            
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        }
         
-        // تأثير تحميل سلس
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.6s ease';
+        // تهيئة كل التأثيرات عند تحميل الصفحة
+        window.addEventListener('load', () => {
+            createStars();
+            animateCounters();
+            
+            // إضافة كلاس للتأثيرات الأولية
+            document.querySelectorAll('.feature-card, .testimonial-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'opacity 0.8s, transform 0.8s';
+            });
             
             setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 50);
+                handleScrollAnimations();
+            }, 500);
+        });
+        
+        // تفعيل تأثيرات التمرير
+        window.addEventListener('scroll', handleScrollAnimations);
+        
+        // تأثيرات عند المرور على الأزرار
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
     </script>
 </body>
