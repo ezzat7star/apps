@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة المستقبل الذكية - ثورة التكنولوجيا العربية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
     <style>
         * {
             margin: 0;
@@ -26,6 +26,12 @@
             --light: #f8f9fa;
             --gold: #ffd700;
             --success: #2ecc71;
+            --finance: #2ecc71;
+            --politics: #e74c3c;
+            --art: #9b59b6;
+            --sports: #3498db;
+            --conflict: #e67e22;
+            --trend: #1abc9c;
         }
         
         body {
@@ -37,9 +43,9 @@
         
         /* شريط التنقل المتطور */
         .navbar {
-            background: rgba(10, 14, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 5%;
+            background: rgba(10, 14, 42, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 18px 5%;
             position: fixed;
             width: 100%;
             top: 0;
@@ -48,392 +54,763 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
         }
         
         .logo {
-            font-size: 2.2rem;
-            font-weight: bold;
+            font-size: 2.3rem;
+            font-weight: 800;
             background: linear-gradient(to right, var(--accent), var(--gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-shadow: 0 2px 10px rgba(0, 188, 212, 0.3);
         }
         
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
         }
         
         .nav-link {
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 20px;
+            font-size: 1.25rem;
+            padding: 12px 24px;
             border-radius: 30px;
-            transition: all 0.3s;
+            transition: all 0.4s;
             position: relative;
+            font-weight: 600;
         }
         
         .nav-link:hover {
-            background: rgba(0, 188, 212, 0.2);
-            transform: translateY(-3px);
+            background: rgba(0, 188, 212, 0.25);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.2);
         }
         
         .nav-link.active {
-            background: var(--accent);
-            color: var(--dark);
-            font-weight: bold;
+            background: linear-gradient(45deg, var(--accent), #0097a7);
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
         }
         
         /* الهيرو */
         .hero {
-            padding: 180px 5% 100px;
+            padding: 200px 5% 120px;
             text-align: center;
-            background: linear-gradient(rgba(10, 14, 42, 0.9), rgba(26, 35, 126, 0.9)),
+            background: linear-gradient(rgba(10, 14, 42, 0.92), rgba(26, 35, 126, 0.92)),
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+            margin-bottom: 60px;
         }
         
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 30px;
-            background: linear-gradient(to right, var(--gold), var(--accent));
+            font-size: 5rem;
+            margin-bottom: 35px;
+            background: linear-gradient(to right, var(--gold), var(--accent), var(--gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+            text-shadow: 0 5px 25px rgba(0, 188, 212, 0.2);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -500px 0; }
+            100% { background-position: 500px 0; }
         }
         
         .hero-subtitle {
-            font-size: 1.8rem;
-            max-width: 900px;
-            margin: 0 auto 50px;
-            line-height: 1.6;
-            color: #e0e0e0;
+            font-size: 2rem;
+            max-width: 950px;
+            margin: 0 auto 60px;
+            line-height: 1.7;
+            color: #f0f0f0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         /* المكونات الرئيسية */
         .components-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            padding: 80px 5%;
-            max-width: 1600px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 45px;
+            padding: 90px 5%;
+            max-width: 1700px;
             margin: 0 auto;
         }
         
         .component-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 40px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 45px 35px;
             border: 2px solid;
-            transition: all 0.4s;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            min-height: 500px;
+            min-height: 520px;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .component-card:hover::before {
+            opacity: 1;
         }
         
         .component-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
         
         .component-card.music {
             border-color: var(--music-color);
+            color: var(--music-color);
         }
         
         .component-card.news {
             border-color: var(--news-color);
+            color: var(--news-color);
         }
         
         .component-card.ai {
             border-color: var(--ai-color);
+            color: var(--ai-color);
         }
         
         .component-card.forum {
             border-color: var(--forum-color);
+            color: var(--forum-color);
         }
         
         .component-header {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 25px;
+            margin-bottom: 35px;
         }
         
         .component-icon {
-            font-size: 3.5rem;
-            padding: 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            font-size: 4rem;
+            padding: 25px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s;
+        }
+        
+        .component-card:hover .component-icon {
+            transform: rotate(15deg) scale(1.1);
         }
         
         .music .component-icon {
             color: var(--music-color);
+            background: rgba(156, 39, 176, 0.2);
         }
         
         .news .component-icon {
             color: var(--news-color);
+            background: rgba(255, 152, 0, 0.2);
         }
         
         .ai .component-icon {
             color: var(--ai-color);
+            background: rgba(76, 175, 80, 0.2);
         }
         
         .forum .component-icon {
             color: var(--forum-color);
+            background: rgba(33, 150, 243, 0.2);
         }
         
         .component-title {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: white;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .component-desc {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            margin-bottom: 30px;
-            color: #e0e0e0;
+            font-size: 1.35rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            color: #e8e8e8;
             flex-grow: 1;
         }
         
         /* مكتبة الموسيقى */
         .music-player {
-            background: rgba(156, 39, 176, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
+            background: rgba(156, 39, 176, 0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 1px solid rgba(156, 39, 176, 0.3);
         }
         
         .track-list {
-            max-height: 200px;
+            max-height: 220px;
             overflow-y: auto;
-            margin: 20px 0;
+            margin: 25px 0;
+            padding-right: 10px;
+        }
+        
+        .track-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .track-list::-webkit-scrollbar-thumb {
+            background: var(--music-color);
+            border-radius: 10px;
         }
         
         .track-item {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            margin: 10px 0;
-            border-radius: 10px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 12px 0;
+            border-radius: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            border: 1px solid transparent;
         }
         
         .track-item:hover {
-            background: rgba(156, 39, 176, 0.2);
-            transform: translateX(-5px);
+            background: rgba(156, 39, 176, 0.25);
+            transform: translateX(-10px);
+            border-color: var(--music-color);
         }
         
         .track-item.playing {
-            background: rgba(156, 39, 176, 0.3);
-            border-right: 5px solid var(--music-color);
+            background: rgba(156, 39, 176, 0.35);
+            border-right: 8px solid var(--music-color);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
         }
         
         /* قارئ الأخبار */
         .news-feed {
-            background: rgba(255, 152, 0, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            max-height: 300px;
+            background: rgba(255, 152, 0, 0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+            max-height: 320px;
             overflow-y: auto;
+            border: 1px solid rgba(255, 152, 0, 0.3);
         }
         
         .news-item {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            margin: 10px 0;
-            border-radius: 10px;
-            border-right: 3px solid var(--news-color);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 15px 0;
+            border-radius: 15px;
+            border-right: 5px solid var(--news-color);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .news-item:hover {
+            transform: translateX(-10px);
+            background: rgba(255, 152, 0, 0.2);
+            border-color: var(--news-color);
         }
         
         .news-category {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 8px 20px;
             background: var(--news-color);
             color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
         }
         
         /* خبير الذكاء الاصطناعي */
         .ai-chat {
-            background: rgba(76, 175, 80, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
-            height: 300px;
+            background: rgba(76, 175, 80, 0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+            height: 320px;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(76, 175, 80, 0.3);
         }
         
         .chat-messages {
             flex-grow: 1;
             overflow-y: auto;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            padding: 10px;
         }
         
         .message {
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 15px;
-            max-width: 80%;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 20px;
+            max-width: 85%;
+            line-height: 1.5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: messageAppear 0.3s ease;
+        }
+        
+        @keyframes messageAppear {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .message.user {
-            background: rgba(0, 188, 212, 0.2);
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.25), rgba(0, 150, 169, 0.25));
             margin-left: auto;
             border-bottom-right-radius: 5px;
+            border: 1px solid rgba(0, 188, 212, 0.4);
         }
         
         .message.ai {
-            background: rgba(76, 175, 80, 0.2);
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(56, 142, 60, 0.25));
             margin-right: auto;
             border-bottom-left-radius: 5px;
+            border: 1px solid rgba(76, 175, 80, 0.4);
         }
         
         .chat-input {
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
         
         .chat-input input {
             flex-grow: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 25px;
+            padding: 18px 25px;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+            border-radius: 30px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .chat-input input:focus {
+            outline: none;
+            border-color: var(--ai-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         /* المنتدى */
         .forum-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
+            gap: 20px;
+            margin: 25px 0;
         }
         
         .stat-box {
-            background: rgba(33, 150, 243, 0.1);
-            padding: 15px;
-            border-radius: 10px;
+            background: rgba(33, 150, 243, 0.15);
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(33, 150, 243, 0.25);
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.2);
         }
         
         .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 2.2rem;
+            font-weight: 800;
             color: var(--forum-color);
             display: block;
+            text-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
         }
         
         .stat-label {
-            font-size: 0.9rem;
-            color: #ccc;
+            font-size: 1rem;
+            color: #d0d0d0;
+            margin-top: 8px;
         }
         
         /* القناة التلفزيونية */
         .tv-channel {
-            background: rgba(255, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 40px 5%;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(204, 0, 0, 0.1));
+            border-radius: 25px;
+            padding: 60px 5%;
+            margin: 80px 5%;
             text-align: center;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.1);
         }
         
         .tv-container {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .tv-screen {
-            background: #000;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            min-height: 400px;
+            background: linear-gradient(135deg, #111, #000);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            min-height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 10px solid #333;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.3);
+            border: 15px solid #222;
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* الأزرار */
-        .action-button {
-            display: inline-block;
-            padding: 15px 35px;
-            background: linear-gradient(to right, var(--accent), var(--primary));
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            text-align: center;
-            margin-top: 20px;
+        .tv-screen::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.03) 50%,
+                transparent 70%
+            );
+            animation: tvScan 3s linear infinite;
         }
         
-        .action-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.4);
+        @keyframes tvScan {
+            0% { transform: translateY(-100%) rotate(45deg); }
+            100% { transform: translateY(100%) rotate(45deg); }
         }
         
-        .music .action-button {
-            background: linear-gradient(to right, var(--music-color), #6a1b9a);
+        /* قسم "هذه اللحظة" الجديد */
+        .moment-section {
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.9), rgba(13, 71, 161, 0.9));
+            padding: 80px 5%;
+            margin: 100px 0 60px;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         }
         
-        .news .action-button {
-            background: linear-gradient(to right, var(--news-color), #ef6c00);
+        .moment-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
         }
         
-        .ai .action-button {
-            background: linear-gradient(to right, var(--ai-color), #1b5e20);
-        }
-        
-        .forum .action-button {
-            background: linear-gradient(to right, var(--forum-color), #0d47a1);
-        }
-        
-        /* الفوتر */
-        footer {
-            background: rgba(5, 10, 35, 0.95);
-            padding: 60px 5% 30px;
-            margin-top: 100px;
-            border-top: 3px solid var(--accent);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+        .moment-container {
+            position: relative;
+            z-index: 1;
             max-width: 1400px;
             margin: 0 auto;
         }
         
-        .footer-section h3 {
-            font-size: 1.8rem;
+        .moment-title {
+            text-align: center;
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 60px;
+            text-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .moment-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 25%;
+            width: 50%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 5px;
+        }
+        
+        .moment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .moment-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .moment-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .moment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: currentColor;
+            opacity: 0.7;
+        }
+        
+        .moment-card.finance {
+            border-color: var(--finance);
+            color: var(--finance);
+        }
+        
+        .moment-card.politics {
+            border-color: var(--politics);
+            color: var(--politics);
+        }
+        
+        .moment-card.art {
+            border-color: var(--art);
+            color: var(--art);
+        }
+        
+        .moment-card.sports {
+            border-color: var(--sports);
+            color: var(--sports);
+        }
+        
+        .moment-card.conflict {
+            border-color: var(--conflict);
+            color: var(--conflict);
+        }
+        
+        .moment-card.trend {
+            border-color: var(--trend);
+            color: var(--trend);
+        }
+        
+        .moment-icon {
+            font-size: 5rem;
             margin-bottom: 25px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            transition: transform 0.5s;
+        }
+        
+        .moment-card:hover .moment-icon {
+            transform: rotate(360deg) scale(1.2);
+        }
+        
+        .moment-card h3 {
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .moment-card p {
+            font-size: 1.3rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .moment-stats {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: auto;
+        }
+        
+        .moment-stat {
+            text-align: center;
+        }
+        
+        .moment-stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            display: block;
+        }
+        
+        .moment-stat-label {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        
+        .live-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff3333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
+        }
+        
+        /* الأزرار */
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px 45px;
+            background: linear-gradient(45deg, var(--accent), #0097a7);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            text-align: center;
+            margin-top: 25px;
+            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .action-button:hover::before {
+            left: 100%;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5);
+        }
+        
+        .music .action-button {
+            background: linear-gradient(45deg, var(--music-color), #6a1b9a);
+            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
+        }
+        
+        .music .action-button:hover {
+            box-shadow: 0 20px 40px rgba(156, 39, 176, 0.5);
+        }
+        
+        .news .action-button {
+            background: linear-gradient(45deg, var(--news-color), #ef6c00);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.3);
+        }
+        
+        .news .action-button:hover {
+            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.5);
+        }
+        
+        .ai .action-button {
+            background: linear-gradient(45deg, var(--ai-color), #1b5e20);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+        
+        .ai .action-button:hover {
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.5);
+        }
+        
+        .forum .action-button {
+            background: linear-gradient(45deg, var(--forum-color), #0d47a1);
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.3);
+        }
+        
+        .forum .action-button:hover {
+            box-shadow: 0 20px 40px rgba(33, 150, 243, 0.5);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: linear-gradient(135deg, rgba(5, 10, 35, 0.97), rgba(10, 20, 60, 0.97));
+            padding: 80px 5% 40px;
+            margin-top: 120px;
+            border-top: 3px solid var(--accent);
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        .footer-section h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
             color: var(--accent);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
         }
         
         .footer-links {
@@ -441,44 +818,54 @@
         }
         
         .footer-links li {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            transition: transform 0.3s;
+        }
+        
+        .footer-links li:hover {
+            transform: translateX(-10px);
         }
         
         .footer-links a {
-            color: #ccc;
+            color: #d0d0d0;
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
         .footer-links a:hover {
             color: var(--accent);
-            padding-right: 10px;
+            padding-right: 15px;
         }
         
         .copyright {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             color: #aaa;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
         
         /* تأثيرات متحركة */
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) rotate(0); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
         }
         
         .floating {
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
         
         .pulse {
@@ -486,16 +873,43 @@
         }
         
         /* التجاوب */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .navbar {
                 flex-direction: column;
-                gap: 20px;
-                padding: 15px 5%;
+                gap: 25px;
+                padding: 20px 5%;
             }
             
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.7rem;
+            }
+            
+            .moment-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .moment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .moment-card {
+                padding: 30px 20px;
             }
             
             .hero h1 {
@@ -506,12 +920,27 @@
                 font-size: 1.4rem;
             }
             
-            .components-grid {
-                grid-template-columns: 1fr;
+            .moment-title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-link {
+                padding: 10px 15px;
+                font-size: 1.1rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 180px 5% 80px;
             }
             
             .component-card {
-                min-height: auto;
+                padding: 30px 20px;
             }
         }
     </style>
@@ -529,16 +958,17 @@
             <a href="#ai" class="nav-link"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a>
             <a href="#forum" class="nav-link"><i class="fas fa-users"></i> المنتدى</a>
             <a href="#tv" class="nav-link"><i class="fas fa-tv"></i> القناة الذكية</a>
+            <a href="#moment" class="nav-link"><i class="fas fa-bolt"></i> هذه اللحظة</a>
         </div>
     </nav>
 
     <!-- القسم الرئيسي -->
     <section class="hero">
-        <h1>🚀 ثورة التكنولوجيا العربية الشاملة</h1>
+        <h1 class="floating">🚀 ثورة التكنولوجيا العربية الشاملة</h1>
         <p class="hero-subtitle">
             منصة متكاملة تجمع بين الذكاء الاصطناعي المتقدم، مكتبة موسيقية ضخمة، 
-            قارئ أخبار ذكي، قناة تلفزيونية تفاعلية، ومنتدى اجتماعي آمن يغنيك عن 
-            فيسبوك وتويتر للأبد!
+            قارئ أخبار ذكي، قناة تلفزيونية تفاعلية، قسم "هذه اللحظة" الحصري،
+            ومنتدى اجتماعي آمن يغنيك عن فيسبوك وتويتر للأبد!
         </p>
         <a href="#components" class="action-button pulse">
             <i class="fas fa-play"></i> ابدأ الرحلة الآن
@@ -562,7 +992,7 @@
             </p>
             
             <div class="music-player">
-                <h3 style="color: var(--music-color); margin-bottom: 15px;">
+                <h3 style="color: var(--music-color); margin-bottom: 20px;">
                     <i class="fas fa-play-circle"></i> تشغيل حي
                 </h3>
                 <div class="track-list">
@@ -583,12 +1013,15 @@
                         <span>06:30</span>
                     </div>
                 </div>
-                <div style="display: flex; gap: 10px; margin-top: 15px;">
-                    <button class="action-button" style="padding: 10px 20px;">
+                <div style="display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+                    <button class="action-button" style="padding: 15px 30px;">
                         <i class="fas fa-play"></i> تشغيل
                     </button>
-                    <button class="action-button" style="padding: 10px 20px;">
+                    <button class="action-button" style="padding: 15px 30px; background: linear-gradient(45deg, #757575, #424242);">
                         <i class="fas fa-pause"></i> إيقاف
+                    </button>
+                    <button class="action-button" style="padding: 15px 30px; background: linear-gradient(45deg, #9c27b0, #6a1b9a);">
+                        <i class="fas fa-random"></i> عشوائي
                     </button>
                 </div>
             </div>
@@ -670,7 +1103,7 @@
                 </div>
                 <div class="chat-input">
                     <input type="text" placeholder="اكتب سؤالك هنا...">
-                    <button class="action-button" style="padding: 10px 25px;">
+                    <button class="action-button" style="padding: 15px 30px;">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
@@ -696,15 +1129,15 @@
             
             <div class="forum-stats">
                 <div class="stat-box">
-                    <span class="stat-number">125K+</span>
+                    <span class="stat-number">158K+</span>
                     <span class="stat-label">عضو نشط</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number">45K+</span>
+                    <span class="stat-number">62K+</span>
                     <span class="stat-label">موضوع نشط</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-number">99.8%</span>
+                    <span class="stat-number">99.9%</span>
                     <span class="stat-label">رضا الأعضاء</span>
                 </div>
                 <div class="stat-box">
@@ -713,19 +1146,19 @@
                 </div>
             </div>
             
-            <div style="margin: 20px 0;">
-                <h4 style="color: var(--forum-color); margin-bottom: 10px;">
+            <div style="margin: 25px 0;">
+                <h4 style="color: var(--forum-color); margin-bottom: 15px; font-size: 1.5rem;">
                     <i class="fas fa-fire"></i> المواضيع الساخنة:
                 </h4>
                 <ul style="list-style: none; color: #e0e0e0;">
-                    <li style="padding: 8px; border-right: 3px solid var(--forum-color); margin: 5px 0;">
-                        📈 مستقبل الاقتصاد المصري 2030
+                    <li style="padding: 12px; border-right: 4px solid var(--forum-color); margin: 8px 0; background: rgba(33, 150, 243, 0.1); border-radius: 10px;">
+                        📈 مستقبل الاقتصاد المصري 2030 - 1.2K تعليق
                     </li>
-                    <li style="padding: 8px; border-right: 3px solid var(--forum-color); margin: 5px 0;">
-                        🔬 الثورة التكنولوجية في التعليم
+                    <li style="padding: 12px; border-right: 4px solid var(--forum-color); margin: 8px 0; background: rgba(33, 150, 243, 0.1); border-radius: 10px;">
+                        🔬 الثورة التكنولوجية في التعليم - 845 تعليق
                     </li>
-                    <li style="padding: 8px; border-right: 3px solid var(--forum-color); margin: 5px 0;">
-                        🎨 إحياء التراث الثقافي العربي
+                    <li style="padding: 12px; border-right: 4px solid var(--forum-color); margin: 8px 0; background: rgba(33, 150, 243, 0.1); border-radius: 10px;">
+                        🎨 إحياء التراث الثقافي العربي - 612 تعليق
                     </li>
                 </ul>
             </div>
@@ -739,48 +1172,191 @@
     <!-- القناة التلفزيونية الذكية -->
     <section class="tv-channel" id="tv">
         <div class="tv-container">
-            <h2 style="font-size: 3rem; color: #ff3333; margin-bottom: 30px;">
+            <h2 style="font-size: 3.5rem; color: #ff3333; margin-bottom: 40px; text-shadow: 0 5px 20px rgba(255, 51, 51, 0.3);">
                 <i class="fas fa-tv"></i> القناة الذكية المباشرة
             </h2>
-            <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 40px; color: #e0e0e0;">
+            <p style="font-size: 1.7rem; max-width: 900px; margin: 0 auto 50px; color: #f0f0f0; line-height: 1.8;">
                 بث حي 24/7 مع محتوى تفاعلي، تحليلات ذكية، برامج حوارية مباشرة، 
                 ونظام تصويت فوري للمشاهدين. الثورة التلفزيونية تبدأ من هنا!
             </p>
             
             <div class="tv-screen">
-                <div style="text-align: center;">
-                    <div style="font-size: 5rem; color: #ff3333; margin-bottom: 20px;">
+                <div style="text-align: center; z-index: 2; position: relative;">
+                    <div style="font-size: 6rem; color: #ff3333; margin-bottom: 30px; animation: pulse 2s infinite;">
                         <i class="fas fa-broadcast-tower"></i>
                     </div>
-                    <h3 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">
-                        البث المباشر الآن
+                    <h3 style="font-size: 2.8rem; color: white; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                        📡 البث المباشر الآن
                     </h3>
-                    <p style="font-size: 1.8rem; color: var(--gold);">
+                    <p style="font-size: 2.2rem; color: var(--gold); font-weight: 700; margin-bottom: 30px;">
                         برنامج "مستقبل التكنولوجيا" مع ضيوف خاصين
                     </p>
-                    <div style="margin-top: 30px; display: flex; gap: 20px; justify-content: center;">
-                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
-                            <span class="stat-number">45.2K</span>
+                    <div style="margin-top: 40px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
+                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.25); border-color: rgba(255, 51, 51, 0.5);">
+                            <span class="stat-number" id="viewersCount">68.5K</span>
                             <span class="stat-label">مشاهد مباشر</span>
                         </div>
-                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
-                            <span class="stat-number">89%</span>
+                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.25); border-color: rgba(255, 51, 51, 0.5);">
+                            <span class="stat-number">94%</span>
                             <span class="stat-label">تفاعل إيجابي</span>
+                        </div>
+                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.25); border-color: rgba(255, 51, 51, 0.5);">
+                            <span class="stat-number">2.1K</span>
+                            <span class="stat-label">تصويت مباشر</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-                <button class="action-button" style="background: linear-gradient(to right, #ff3333, #cc0000);">
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+                <button class="action-button" style="background: linear-gradient(45deg, #ff3333, #cc0000); padding: 20px 40px;">
                     <i class="fas fa-play"></i> مشاهدة مباشرة
                 </button>
-                <button class="action-button" style="background: linear-gradient(to right, #666, #333);">
+                <button class="action-button" style="background: linear-gradient(45deg, #666, #333); padding: 20px 40px;">
                     <i class="fas fa-comments"></i> غرفة المحادثة
                 </button>
-                <button class="action-button" style="background: linear-gradient(to right, #4CAF50, #2E7D32);">
+                <button class="action-button" style="background: linear-gradient(45deg, #4CAF50, #2E7D32); padding: 20px 40px;">
                     <i class="fas fa-vote-yea"></i> التصويت المباشر
                 </button>
+                <button class="action-button" style="background: linear-gradient(45deg, #9C27B0, #6A1B9A); padding: 20px 40px;">
+                    <i class="fas fa-archive"></i> الأرشيف
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم "هذه اللحظة" الجديد -->
+    <section class="moment-section" id="moment">
+        <div class="moment-container">
+            <h2 class="moment-title floating">
+                <i class="fas fa-bolt"></i> هذه اللحظة
+                <span class="live-badge">مباشر</span>
+            </h2>
+            
+            <div class="moment-grid">
+                <!-- المال والبورصات -->
+                <div class="moment-card finance" onclick="showMomentDetails('finance')">
+                    <div class="moment-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>المال والبورصات</h3>
+                    <p>تحديثات حية للأسواق المالية، أسعار العملات، المؤشرات العالمية، ونصائح استثمارية ذكية</p>
+                    <div class="moment-stats">
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">+2.8%</span>
+                            <span class="moment-stat-label">مؤشر EGX</span>
+                        </div>
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">$89.2</span>
+                            <span class="moment-stat-label">برميل النفط</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- السياسة والتطورات -->
+                <div class="moment-card politics" onclick="showMomentDetails('politics')">
+                    <div class="moment-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>السياسة والتطورات</h3>
+                    <p>أهم القرارات السياسية، التطورات الدبلوماسية، التحالفات الدولية، والبيانات الرسمية</p>
+                    <div class="moment-stats">
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">12</span>
+                            <span class="moment-stat-label">قرار جديد</span>
+                        </div>
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">3</span>
+                            <span class="moment-stat-label">قمة دولية</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- الفن والسينما -->
+                <div class="moment-card art" onclick="showMomentDetails('art')">
+                    <div class="moment-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>الفن والسينما</h3>
+                    <p>أحدث الأعمال الفنية، عروض السينما، الحفلات الموسيقية، والمهرجانات الثقافية العالمية</p>
+                    <div class="moment-stats">
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">8.9</span>
+                            <span class="moment-stat-label">تقييم الفيلم</span>
+                        </div>
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">45K</span>
+                            <span class="moment-stat-label">حضور حفل</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- الرياضة -->
+                <div class="moment-card sports" onclick="showMomentDetails('sports')">
+                    <div class="moment-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>الرياضة</h3>
+                    <p>نتائج المباريات، التحليلات الرياضية، انتقالات اللاعبين، والبث المباشر للأحداث الكبرى</p>
+                    <div class="moment-stats">
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">3-1</span>
+                            <span class="moment-stat-label">آخر مباراة</span>
+                        </div>
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">24</span>
+                            <span class="moment-stat-label">حدث مباشر</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- الصراعات في العالم -->
+                <div class="moment-card conflict" onclick="showMomentDetails('conflict')">
+                    <div class="moment-icon">
+                        <i class="fas fa-peace"></i>
+                    </div>
+                    <h3>الصراعات في العالم</h3>
+                    <p>تحليلات استراتيجية، تطورات النزاعات، محادثات السلام، وجهود الأمم المتحدة والإقليمية</p>
+                    <div class="moment-stats">
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">2</span>
+                            <span class="moment-stat-label">محادثة سلام</span>
+                        </div>
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">87%</span>
+                            <span class="moment-stat-label">دعم شعبي</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ترند اللحظة -->
+                <div class="moment-card trend" onclick="showMomentDetails('trend')">
+                    <div class="moment-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>ترند اللحظة</h3>
+                    <p>أكثر المواضيع تداولاً، الهاشتاجات الشائعة، الشخصيات الأكثر حديثاً، والظواهر الاجتماعية</p>
+                    <div class="moment-stats">
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">#تحدي_المستقبل</span>
+                            <span class="moment-stat-label">الهاشتاق الأول</span>
+                        </div>
+                        <div class="moment-stat">
+                            <span class="moment-stat-number">2.5M</span>
+                            <span class="moment-stat-label">مشاركة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="action-button" onclick="refreshMoments()" style="padding: 20px 50px; font-size: 1.5rem;">
+                    <i class="fas fa-sync-alt"></i> تحديث اللحظة الآني
+                </button>
+                <p style="color: #ccc; margin-top: 20px; font-size: 1.2rem;">
+                    <i class="fas fa-info-circle"></i>
+                    يتم تحديث البيانات كل 30 ثانية بشكل تلقائي
+                </p>
             </div>
         </div>
     </section>
@@ -790,19 +1366,31 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>منصة المستقبل الذكية</h3>
-                <p style="color: #ccc; line-height: 1.6;">
+                <p style="color: #d0d0d0; line-height: 1.8; font-size: 1.2rem;">
                     ثورة تكنولوجية عربية شاملة، تجمع بين الإبداع والأمان 
                     والذكاء الاصطناعي لخلق تجربة رقمية لا مثيل لها.
+                    نحن نعيد تعريف التواصل الاجتماعي والإعلام الرقمي.
                 </p>
-                <div style="display: flex; gap: 15px; margin-top: 20px;">
-                    <div style="font-size: 2rem; color: var(--accent);">
+                <div style="display: flex; gap: 20px; margin-top: 30px;">
+                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
+                         onmouseover="this.style.transform='scale(1.2)'" 
+                         onmouseout="this.style.transform='scale(1)'">
                         <i class="fab fa-android"></i>
                     </div>
-                    <div style="font-size: 2rem; color: var(--accent);">
+                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
+                         onmouseover="this.style.transform='scale(1.2)'" 
+                         onmouseout="this.style.transform='scale(1)'">
                         <i class="fab fa-apple"></i>
                     </div>
-                    <div style="font-size: 2rem; color: var(--accent);">
+                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
+                         onmouseover="this.style.transform='scale(1.2)'" 
+                         onmouseout="this.style.transform='scale(1)'">
                         <i class="fab fa-windows"></i>
+                    </div>
+                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
+                         onmouseover="this.style.transform='scale(1.2)'" 
+                         onmouseout="this.style.transform='scale(1)'">
+                        <i class="fab fa-linux"></i>
                     </div>
                 </div>
             </div>
@@ -815,29 +1403,35 @@
                     <li><a href="#ai"><i class="fas fa-arrow-left"></i> الذكاء الاصطناعي</a></li>
                     <li><a href="#forum"><i class="fas fa-arrow-left"></i> المنتدى الاجتماعي</a></li>
                     <li><a href="#tv"><i class="fas fa-arrow-left"></i> القناة الذكية</a></li>
+                    <li><a href="#moment"><i class="fas fa-arrow-left"></i> قسم هذه اللحظة</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>تواصل معنا</h3>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-envelope"></i> info@future-platform.com</a></li>
-                    <li><a href="#"><i class="fas fa-phone"></i> +20 100 123 4567</a></li>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</a></li>
+                    <li><a href="mailto:info@future-platform.com"><i class="fas fa-envelope"></i> info@future-platform.com</a></li>
+                    <li><a href="tel:+201001234567"><i class="fas fa-phone"></i> +20 100 123 4567</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر - المقر الرئيسي</a></li>
+                    <li><a href="#"><i class="fas fa-headset"></i> الدعم الفني 24/7</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> الشروط والأحكام</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>حمل التطبيق</h3>
-                <p style="color: #ccc; margin-bottom: 20px;">
-                    حمل تطبيقنا الآن واستمتع بالتجربة الكاملة على هاتفك
+                <p style="color: #d0d0d0; margin-bottom: 25px; font-size: 1.2rem;">
+                    حمل تطبيقنا الآن واستمتع بالتجربة الكاملة على هاتفك مع إشعارات فورية لكل تحديث
                 </p>
-                <div style="display: flex; gap: 10px;">
-                    <button class="action-button" style="padding: 12px 25px;">
-                        <i class="fab fa-google-play"></i> Google Play
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <button class="action-button" style="padding: 18px 30px; justify-content: center;">
+                        <i class="fab fa-google-play"></i> حمل من Google Play
                     </button>
-                    <button class="action-button" style="padding: 12px 25px;">
-                        <i class="fab fa-app-store"></i> App Store
+                    <button class="action-button" style="padding: 18px 30px; justify-content: center;">
+                        <i class="fab fa-app-store"></i> حمل من App Store
+                    </button>
+                    <button class="action-button" style="padding: 18px 30px; justify-content: center; background: linear-gradient(45deg, #333, #000);">
+                        <i class="fab fa-microsoft"></i> حمل من Microsoft Store
                     </button>
                 </div>
             </div>
@@ -845,7 +1439,12 @@
         
         <div class="copyright">
             © 2024 منصة المستقبل الذكية - جميع الحقوق محفوظة | 
-            تصميم وتطوير بفخر في الوطن العربي | الثورة التكنولوجية تبدأ من هنا!
+            تصميم وتطوير بفخر في الوطن العربي بواسطة فريق المبرمجين العرب | 
+            الثورة التكنولوجية تبدأ من هنا! 🚀
+            <br>
+            <span style="color: #888; font-size: 1rem; margin-top: 10px; display: block;">
+                هذا الموقع هو نموذج توضيحي لإمكانيات التطوير العربي المتقدم
+            </span>
         </div>
     </footer>
 
@@ -859,10 +1458,12 @@
                 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
         
@@ -872,9 +1473,8 @@
                 document.querySelectorAll('.track-item').forEach(i => i.classList.remove('playing'));
                 this.classList.add('playing');
                 
-                // محاكاة تشغيل الموسيقى
                 const songName = this.querySelector('span').textContent;
-                showNotification(`🎵 الآن تشغيل: ${songName}`);
+                showNotification(`🎵 الآن تشغيل: ${songName}`, 'music');
             });
         });
         
@@ -882,17 +1482,25 @@
         const chatInput = document.querySelector('.chat-input input');
         const chatMessages = document.querySelector('.chat-messages');
         
-        chatInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && this.value.trim()) {
-                const userMessage = this.value;
+        if (chatInput && chatMessages) {
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && this.value.trim()) {
+                    sendMessage();
+                }
+            });
+            
+            document.querySelector('.ai-chat .action-button').addEventListener('click', sendMessage);
+            
+            function sendMessage() {
+                const userMessage = chatInput.value.trim();
+                if (!userMessage) return;
                 
-                // إضافة رسالة المستخدم
                 const userMsgDiv = document.createElement('div');
                 userMsgDiv.className = 'message user';
                 userMsgDiv.textContent = userMessage;
                 chatMessages.appendChild(userMsgDiv);
                 
-                this.value = '';
+                chatInput.value = '';
                 
                 // محاكاة رد الذكاء الاصطناعي
                 setTimeout(() => {
@@ -901,7 +1509,9 @@
                         "شكراً لسؤالك. لدي المعلومات التالية حول هذا الموضوع...",
                         "أعتقد أن هذا يحتاج إلى بعض التوضيح. اسمح لي أن أشرح...",
                         "حسناً، دعني أفكر في هذا. بناءً على البيانات المتاحة...",
-                        "هذا موضوع شيق! إليك ما وجدته من مصادر موثوقة..."
+                        "هذا موضوع شيق! إليك ما وجدته من مصادر موثوقة...",
+                        "لقد بحثت في قاعدة بياناتي، وهذه هي الإجابة الدقيقة...",
+                        "سؤال مهم! دعني أقدم لك تحليلاً شاملاً بناءً على أحدث البيانات..."
                     ];
                     
                     const aiMsgDiv = document.createElement('div');
@@ -914,66 +1524,236 @@
                 
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-        });
+        }
         
         // تحديث عدد المشاهدين بشكل حي
         function updateViewers() {
-            const viewersElement = document.querySelector('.tv-channel .stat-number');
+            const viewersElement = document.getElementById('viewersCount');
             if (viewersElement) {
-                let viewers = parseInt(viewersElement.textContent.replace('K', '000')) || 45200;
-                viewers += Math.floor(Math.random() * 100) - 40;
-                if (viewers < 45000) viewers = 45000;
-                if (viewers > 50000) viewers = 50000;
+                let viewersText = viewersElement.textContent;
+                let viewers = parseInt(viewersText.replace('K', '000').replace('.', '')) || 68500;
+                viewers += Math.floor(Math.random() * 200) - 80;
+                if (viewers < 65000) viewers = 65000;
+                if (viewers > 75000) viewers = 75000;
                 viewersElement.textContent = (viewers / 1000).toFixed(1) + 'K';
             }
         }
         
-        // إشعارات
-        function showNotification(message) {
+        // تحديثات قسم "هذه اللحظة"
+        function updateMomentStats() {
+            document.querySelectorAll('.moment-stat-number').forEach(stat => {
+                const parentCard = stat.closest('.moment-card');
+                if (parentCard.classList.contains('finance')) {
+                    if (stat.textContent.includes('%')) {
+                        let value = parseFloat(stat.textContent);
+                        value += (Math.random() * 0.3 - 0.15);
+                        stat.textContent = value.toFixed(1) + '%';
+                        stat.style.color = value >= 0 ? '#2ecc71' : '#e74c3c';
+                    } else if (stat.textContent.includes('$')) {
+                        let value = parseFloat(stat.textContent.replace('$', ''));
+                        value += (Math.random() * 0.5 - 0.25);
+                        stat.textContent = '$' + value.toFixed(1);
+                    }
+                } else if (parentCard.classList.contains('trend')) {
+                    if (stat.textContent.includes('M')) {
+                        let value = parseFloat(stat.textContent);
+                        value += (Math.random() * 0.1);
+                        stat.textContent = value.toFixed(1) + 'M';
+                    }
+                }
+            });
+        }
+        
+        // تفاصيل قسم "هذه اللحظة"
+        function showMomentDetails(category) {
+            const categoryNames = {
+                finance: 'المال والبورصات',
+                politics: 'السياسة والتطورات',
+                art: 'الفن والسينما',
+                sports: 'الرياضة',
+                conflict: 'الصراعات في العالم',
+                trend: 'ترند اللحظة'
+            };
+            
+            const categoryInfo = {
+                finance: '📈 ارتفاع مؤشر EGX30 بنسبة 2.8% في تعاملات اليوم مع صعود أسهم البنوك والاتصالات.',
+                politics: '🏛️ انعقاد القمة العربية الطارئة في الرياض لبحث التطورات الإقليمية.',
+                art: '🎬 فيلم "حلم القاهرة" يحصد جائزة أفضل فيلم عربي في مهرجان كان السينمائي.',
+                sports: '⚽ فوز المنتخب المصري على المغرب 3-1 وتأهله إلى نهائي كأس الأمم الأفريقية.',
+                conflict: '🕊️ توقيع اتفاقية وقف إطلاق النار في منطقة النزاع بعد مفاوضات ماراثونية.',
+                trend: '🔥 #تحدي_المستقبل يتصدر الترند العربي بمشاركة 2.5 مليون مستخدم.'
+            };
+            
+            showNotification(`📢 ${categoryInfo[category]}`, category);
+        }
+        
+        // تحديث اللحظة
+        function refreshMoments() {
+            showNotification('🔄 جاري تحديث بيانات "هذه اللحظة"...', 'info');
+            
+            // محاكاة التحديث
+            setTimeout(() => {
+                updateMomentStats();
+                showNotification('✅ تم تحديث بيانات "هذه اللحظة" بنجاح!', 'success');
+                
+                // تأثير بصري على البطاقات
+                document.querySelectorAll('.moment-card').forEach(card => {
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.transform = 'scale(1)';
+                    }, 300);
+                });
+            }, 1500);
+        }
+        
+        // إشعارات متقدمة
+        function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
+            const icons = {
+                music: '🎵',
+                info: 'ℹ️',
+                success: '✅',
+                finance: '💰',
+                politics: '🏛️',
+                art: '🎨',
+                sports: '⚽',
+                conflict: '🕊️',
+                trend: '🔥'
+            };
+            
+            const icon = icons[type] || '📢';
+            
             notification.style.cssText = `
                 position: fixed;
-                top: 100px;
-                right: 20px;
-                background: var(--accent);
+                top: 120px;
+                right: 30px;
+                background: ${getNotificationColor(type)};
                 color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
+                padding: 20px 30px;
+                border-radius: 15px;
                 z-index: 10000;
-                animation: slideIn 0.3s ease;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                animation: slideInRight 0.4s ease, slideOutRight 0.4s ease 2.6s;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                max-width: 400px;
+                font-size: 1.1rem;
+                line-height: 1.5;
+                border-right: 5px solid ${getNotificationBorderColor(type)};
+                display: flex;
+                align-items: center;
+                gap: 15px;
             `;
-            notification.textContent = message;
+            
+            notification.innerHTML = `
+                <span style="font-size: 1.8rem;">${icon}</span>
+                <span>${message}</span>
+            `;
+            
             document.body.appendChild(notification);
             
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
+                notification.remove();
             }, 3000);
+        }
+        
+        function getNotificationColor(type) {
+            const colors = {
+                music: 'linear-gradient(135deg, #9c27b0, #6a1b9a)',
+                info: 'linear-gradient(135deg, #2196f3, #0d47a1)',
+                success: 'linear-gradient(135deg, #4caf50, #1b5e20)',
+                finance: 'linear-gradient(135deg, #2ecc71, #27ae60)',
+                politics: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+                art: 'linear-gradient(135deg, #9b59b6, #8e44ad)',
+                sports: 'linear-gradient(135deg, #3498db, #2980b9)',
+                conflict: 'linear-gradient(135deg, #e67e22, #d35400)',
+                trend: 'linear-gradient(135deg, #1abc9c, #16a085)'
+            };
+            return colors[type] || colors.info;
+        }
+        
+        function getNotificationBorderColor(type) {
+            const colors = {
+                music: '#6a1b9a',
+                info: '#0d47a1',
+                success: '#1b5e20',
+                finance: '#27ae60',
+                politics: '#c0392b',
+                art: '#8e44ad',
+                sports: '#2980b9',
+                conflict: '#d35400',
+                trend: '#16a085'
+            };
+            return colors[type] || colors.info;
         }
         
         // إضافة أنماط للرسوم المتحركة
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes slideIn {
+            @keyframes slideInRight {
                 from { transform: translateX(100%); opacity: 0; }
                 to { transform: translateX(0); opacity: 1; }
             }
-            @keyframes slideOut {
+            @keyframes slideOutRight {
                 from { transform: translateX(0); opacity: 1; }
                 to { transform: translateX(100%); opacity: 0; }
+            }
+            @keyframes tvScan {
+                0% { transform: translateY(-100%) rotate(45deg); }
+                100% { transform: translateY(100%) rotate(45deg); }
+            }
+            @keyframes shimmer {
+                0% { background-position: -500px 0; }
+                100% { background-position: 500px 0; }
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0) rotate(0); }
+                33% { transform: translateY(-20px) rotate(2deg); }
+                66% { transform: translateY(-10px) rotate(-2deg); }
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(1.1); opacity: 0.8; }
+                100% { transform: scale(1); opacity: 1; }
             }
         `;
         document.head.appendChild(style);
         
         // تحديثات حية
-        setInterval(updateViewers, 5000);
+        setInterval(updateViewers, 4000);
+        setInterval(updateMomentStats, 10000);
         
         // بدء الرحلة
         window.addEventListener('load', () => {
             setTimeout(() => {
-                showNotification('🚀 مرحباً بك في منصة المستقبل الذكية! ابدأ رحلتك الآن.');
+                showNotification('🚀 مرحباً بك في منصة المستقبل الذكية! ابدأ رحلتك الآن.', 'success');
+                
+                // تحميل البيانات الأولية
+                setTimeout(() => {
+                    refreshMoments();
+                }, 2000);
             }, 1000);
+        });
+        
+        // تأثيرات عند التمرير
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero, .moment-section');
+            
+            parallaxElements.forEach(el => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                el.style.backgroundPosition = `center ${yPos}px`;
+            });
+        });
+        
+        // تأثيرات تفاعلية للأزرار
+        document.querySelectorAll('.action-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
     </script>
 </body>
