@@ -1,30 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>موقعي الخاص</title>
+    <title>مصر الإخبارية</title>
     <style>
         body {
-            background: black;
-            color: gold;
+            background: linear-gradient(45deg, darkblue, black);
+            color: white;
             text-align: center;
             padding: 50px;
             font-family: Arial;
+            min-height: 100vh;
         }
-        button {
+        
+        .header {
+            background: linear-gradient(90deg, red, gold);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 50px;
+            color: white;
+            text-shadow: 3px 3px 5px black;
+        }
+        
+        .btn {
             background: gold;
             color: black;
-            padding: 15px 30px;
+            padding: 20px 40px;
             border: none;
-            border-radius: 10px;
-            font-size: 20px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
             margin: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px gold;
+        }
+        
+        .news-box {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 600px;
         }
     </style>
 </head>
 <body>
-    <h1>🎉 مرحباً!</h1>
-    <h2>موقعي يعمل بنجاح!</h2>
-    <button onclick="alert('أنا ذكي!')">اضغطني</button>
-    <p>صنع بفخر في مصر 🇪🇬</p>
+    <div class="header">
+        <h1>🇪🇬 مصر الإخبارية</h1>
+        <p style="font-size: 20px;">الموقع الرسمي - يعمل الآن!</p>
+    </div>
+    
+    <div class="news-box">
+        <h2>📰 الأخبار العاجلة</h2>
+        <p>موقع مصر الإخبارية يبدأ عمله بنجاح!</p>
+        <p>يمكنك الآن مشاركته مع الأصدقاء.</p>
+    </div>
+    
+    <div>
+        <button class="btn" onclick="showMessage()">📢 أخبرني أكثر</button>
+        <button class="btn" onclick="shareSite()">📤 شارك الموقع</button>
+        <button class="btn" onclick="testSite()">🧪 اختبر الموقع</button>
+    </div>
+    
+    <div style="margin-top: 50px; padding: 20px; border-top: 2px solid gold;">
+        <p>موقع مصري أصيل 🇪🇬</p>
+        <p id="link" style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; margin: 10px;">
+            جاري تحميل الرابط...
+        </p>
+    </div>
+
+    <script>
+        // عرض رابط الموقع
+        document.getElementById('link').textContent = window.location.href;
+        
+        function showMessage() {
+            alert('🎉 موقعك يعمل بنجاح!\n\nالرابط: ' + window.location.href);
+        }
+        
+        function shareSite() {
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'مصر الإخبارية',
+                    text: '🌐 موقع مصري رائع!',
+                    url: url
+                });
+            } else {
+                navigator.clipboard.writeText(url);
+                alert('✅ تم نسخ الرابط!\n\n' + url);
+            }
+        }
+        
+        function testSite() {
+            alert('✅ كل شيء يعمل بشكل ممتاز!\n\n🎯 الموقع جاهز للاستخدام.');
+        }
+        
+        // رسالة سرية
+        console.log('🚀 موقع مصر الإخبارية يعمل!');
+    </script>
 </body>
 </html>
