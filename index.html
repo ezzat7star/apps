@@ -5,164 +5,307 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة المستقبل الذكية - ثورة التكنولوجيا العربية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
         :root {
-            --primary: #1a237e;
-            --secondary: #0d47a1;
+            --primary: #0a0e2a;
+            --secondary: #1a237e;
             --accent: #00bcd4;
-            --ai-color: #4caf50;
-            --music-color: #9c27b0;
-            --news-color: #ff9800;
-            --forum-color: #2196f3;
-            --dark: #0a0e2a;
-            --light: #f8f9fa;
             --gold: #ffd700;
-            --success: #2ecc71;
+            --music: #9c27b0;
+            --news: #ff9800;
+            --ai: #4caf50;
+            --forum: #2196f3;
+            --video: #ff4081;
+            --education: #4caf50;
             --finance: #2ecc71;
             --politics: #e74c3c;
             --art: #9b59b6;
             --sports: #3498db;
             --conflict: #e67e22;
             --trend: #1abc9c;
+            --success: #2ecc71;
+            --error: #e74c3c;
+            --dark: #0a0e2a;
+            --light: #f8f9fa;
         }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
         body {
-            background: linear-gradient(135deg, var(--dark) 0%, #1a237e 100%);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
         }
-        
-        /* شريط التنقل المتطور */
-        .navbar {
-            background: rgba(10, 14, 42, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 18px 5%;
+
+        /* ========== النجوم المتلألئة ========== */
+        .stars {
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--accent);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ========== الشريط العلوي ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         .logo {
-            font-size: 2.3rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent), var(--gold));
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--accent), var(--gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-shadow: 0 2px 10px rgba(0, 188, 212, 0.3);
+            gap: 15px;
         }
-        
+
         .nav-links {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
-        
+
         .nav-link {
             color: white;
             text-decoration: none;
-            font-size: 1.25rem;
-            padding: 12px 24px;
+            padding: 12px 25px;
             border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
             transition: all 0.4s;
             position: relative;
-            font-weight: 600;
+            overflow: hidden;
         }
-        
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
         .nav-link:hover {
-            background: rgba(0, 188, 212, 0.25);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 188, 212, 0.2);
+            background: rgba(0, 188, 212, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
         }
-        
+
         .nav-link.active {
             background: linear-gradient(45deg, var(--accent), #0097a7);
             color: white;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4);
         }
-        
-        /* الهيرو */
+
+        /* ========== القسم الرئيسي ========== */
         .hero {
-            padding: 200px 5% 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(10, 14, 42, 0.92), rgba(26, 35, 126, 0.92)),
-                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            padding: 150px 5% 100px;
             position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-            margin-bottom: 60px;
+            overflow: hidden;
         }
-        
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 188, 212, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
         .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 35px;
-            background: linear-gradient(to right, var(--gold), var(--accent), var(--gold));
+            font-size: 5.5rem;
+            background: linear-gradient(45deg, var(--gold), var(--accent), var(--gold));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 5px 25px rgba(0, 188, 212, 0.2);
+            margin-bottom: 30px;
             animation: shimmer 3s infinite;
+            line-height: 1.2;
         }
-        
+
         @keyframes shimmer {
-            0% { background-position: -500px 0; }
-            100% { background-position: 500px 0; }
+            0% { background-position: -500px; }
+            100% { background-position: 500px; }
         }
-        
+
         .hero-subtitle {
             font-size: 2rem;
-            max-width: 950px;
-            margin: 0 auto 60px;
-            line-height: 1.7;
-            color: #f0f0f0;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+            color: #e0e0e0;
         }
-        
-        /* المكونات الرئيسية */
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 22px 50px;
+            background: linear-gradient(45deg, var(--accent), #0097a7);
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 80px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--gold), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        /* ========== شبكة المكونات ========== */
+        .components-section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 200px;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 5px;
+        }
+
         .components-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 45px;
-            padding: 90px 5%;
-            max-width: 1700px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            max-width: 1600px;
             margin: 0 auto;
         }
-        
+
         .component-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            backdrop-filter: blur(15px);
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(20px);
             border-radius: 30px;
-            padding: 45px 35px;
+            padding: 40px;
             border: 2px solid;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            min-height: 520px;
+            min-height: 550px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
-        
+
         .component-card::before {
             content: '';
             position: absolute;
@@ -170,324 +313,476 @@
             left: 0;
             right: 0;
             height: 5px;
-            background: linear-gradient(90deg, transparent, currentColor, transparent);
+            background: currentColor;
             opacity: 0;
             transition: opacity 0.5s;
         }
-        
+
         .component-card:hover::before {
             opacity: 1;
         }
-        
+
         .component-card:hover {
             transform: translateY(-20px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.3);
         }
-        
-        .component-card.music {
-            border-color: var(--music-color);
-            color: var(--music-color);
-        }
-        
-        .component-card.news {
-            border-color: var(--news-color);
-            color: var(--news-color);
-        }
-        
-        .component-card.ai {
-            border-color: var(--ai-color);
-            color: var(--ai-color);
-        }
-        
-        .component-card.forum {
-            border-color: var(--forum-color);
-            color: var(--forum-color);
-        }
-        
-        .component-header {
+
+        .component-card.music { border-color: var(--music); color: var(--music); }
+        .component-card.news { border-color: var(--news); color: var(--news); }
+        .component-card.ai { border-color: var(--ai); color: var(--ai); }
+        .component-card.forum { border-color: var(--forum); color: var(--forum); }
+        .component-card.video { border-color: var(--video); color: var(--video); }
+        .component-card.education { border-color: var(--education); color: var(--education); }
+
+        .card-header {
             display: flex;
             align-items: center;
             gap: 25px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
-        
-        .component-icon {
-            font-size: 4rem;
-            padding: 25px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             transition: transform 0.4s;
         }
-        
-        .component-card:hover .component-icon {
+
+        .component-card:hover .card-icon {
             transform: rotate(15deg) scale(1.1);
         }
-        
-        .music .component-icon {
-            color: var(--music-color);
-            background: rgba(156, 39, 176, 0.2);
-        }
-        
-        .news .component-icon {
-            color: var(--news-color);
-            background: rgba(255, 152, 0, 0.2);
-        }
-        
-        .ai .component-icon {
-            color: var(--ai-color);
-            background: rgba(76, 175, 80, 0.2);
-        }
-        
-        .forum .component-icon {
-            color: var(--forum-color);
-            background: rgba(33, 150, 243, 0.2);
-        }
-        
-        .component-title {
-            font-size: 2.4rem;
+
+        .card-title {
+            font-size: 2.2rem;
             color: white;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        
-        .component-desc {
-            font-size: 1.35rem;
+
+        .card-desc {
+            font-size: 1.3rem;
             line-height: 1.8;
-            margin-bottom: 35px;
-            color: #e8e8e8;
+            color: #e0e0e0;
+            margin-bottom: 30px;
             flex-grow: 1;
         }
-        
-        /* مكتبة الموسيقى */
+
+        /* ========== مكتبة الموسيقى ========== */
         .music-player {
-            background: rgba(156, 39, 176, 0.15);
+            background: rgba(156, 39, 176, 0.1);
             border-radius: 20px;
             padding: 25px;
-            margin-top: 25px;
+            margin: 20px 0;
             border: 1px solid rgba(156, 39, 176, 0.3);
         }
-        
+
         .track-list {
-            max-height: 220px;
+            max-height: 200px;
             overflow-y: auto;
-            margin: 25px 0;
-            padding-right: 10px;
+            margin: 20px 0;
         }
-        
-        .track-list::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .track-list::-webkit-scrollbar-thumb {
-            background: var(--music-color);
-            border-radius: 10px;
-        }
-        
+
         .track-item {
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.08);
-            margin: 12px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            margin: 10px 0;
             border-radius: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: all 0.4s;
-            border: 1px solid transparent;
-        }
-        
-        .track-item:hover {
-            background: rgba(156, 39, 176, 0.25);
-            transform: translateX(-10px);
-            border-color: var(--music-color);
-        }
-        
-        .track-item.playing {
-            background: rgba(156, 39, 176, 0.35);
-            border-right: 8px solid var(--music-color);
-            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.3);
-        }
-        
-        /* قارئ الأخبار */
-        .news-feed {
-            background: rgba(255, 152, 0, 0.15);
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 25px;
-            max-height: 320px;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 152, 0, 0.3);
-        }
-        
-        .news-item {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            margin: 15px 0;
-            border-radius: 15px;
-            border-right: 5px solid var(--news-color);
             transition: all 0.3s;
             border: 1px solid transparent;
         }
-        
+
+        .track-item:hover {
+            background: rgba(156, 39, 176, 0.2);
+            transform: translateX(-10px);
+            border-color: var(--music);
+        }
+
+        .track-item.playing {
+            background: rgba(156, 39, 176, 0.3);
+            border-left: 5px solid var(--music);
+        }
+
+        /* ========== قارئ الأخبار ========== */
+        .news-feed {
+            background: rgba(255, 152, 0, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .news-item {
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            margin: 15px 0;
+            border-radius: 15px;
+            border-right: 4px solid var(--news);
+            transition: all 0.3s;
+        }
+
         .news-item:hover {
             transform: translateX(-10px);
             background: rgba(255, 152, 0, 0.2);
-            border-color: var(--news-color);
         }
-        
+
         .news-category {
             display: inline-block;
             padding: 8px 20px;
-            background: var(--news-color);
+            background: var(--news);
             color: white;
-            border-radius: 25px;
-            font-size: 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+            margin-bottom: 10px;
         }
-        
-        /* خبير الذكاء الاصطناعي */
+
+        /* ========== الذكاء الاصطناعي ========== */
         .ai-chat {
-            background: rgba(76, 175, 80, 0.15);
+            background: rgba(76, 175, 80, 0.1);
             border-radius: 20px;
             padding: 25px;
-            margin-top: 25px;
-            height: 320px;
+            margin: 20px 0;
+            height: 300px;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(76, 175, 80, 0.3);
         }
-        
+
         .chat-messages {
             flex-grow: 1;
             overflow-y: auto;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding: 10px;
         }
-        
+
         .message {
             padding: 15px 20px;
-            margin: 15px 0;
+            margin: 10px 0;
             border-radius: 20px;
             max-width: 85%;
-            line-height: 1.5;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            animation: messageAppear 0.3s ease;
+            animation: messageAppear 0.3s;
         }
-        
+
         @keyframes messageAppear {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .message.user {
-            background: linear-gradient(135deg, rgba(0, 188, 212, 0.25), rgba(0, 150, 169, 0.25));
-            margin-left: auto;
-            border-bottom-right-radius: 5px;
-            border: 1px solid rgba(0, 188, 212, 0.4);
-        }
-        
+
         .message.ai {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(56, 142, 60, 0.25));
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(56, 142, 60, 0.2));
             margin-right: auto;
-            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
             border: 1px solid rgba(76, 175, 80, 0.4);
         }
-        
+
+        .message.user {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.2), rgba(0, 150, 169, 0.2));
+            margin-left: auto;
+            border-bottom-left-radius: 5px;
+            border: 1px solid rgba(0, 188, 212, 0.4);
+        }
+
         .chat-input {
             display: flex;
             gap: 15px;
         }
-        
+
         .chat-input input {
             flex-grow: 1;
-            padding: 18px 25px;
+            padding: 15px 25px;
             border: 2px solid rgba(76, 175, 80, 0.3);
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s;
         }
-        
+
         .chat-input input:focus {
             outline: none;
-            border-color: var(--ai-color);
+            border-color: var(--ai);
             box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-            background: rgba(255, 255, 255, 0.15);
         }
-        
-        /* المنتدى */
+
+        /* ========== المنتدى ========== */
         .forum-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin: 25px 0;
         }
-        
+
         .stat-box {
-            background: rgba(33, 150, 243, 0.15);
+            background: rgba(33, 150, 243, 0.1);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
             border: 1px solid rgba(33, 150, 243, 0.3);
             transition: all 0.3s;
         }
-        
+
         .stat-box:hover {
             transform: translateY(-5px);
-            background: rgba(33, 150, 243, 0.25);
-            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.2);
+            background: rgba(33, 150, 243, 0.2);
         }
-        
+
         .stat-number {
             font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--forum-color);
+            font-weight: 900;
+            color: var(--forum);
             display: block;
-            text-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
         }
-        
+
         .stat-label {
             font-size: 1rem;
-            color: #d0d0d0;
-            margin-top: 8px;
+            color: #ccc;
+            margin-top: 5px;
         }
-        
-        /* القناة التلفزيونية */
-        .tv-channel {
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(204, 0, 0, 0.1));
-            border-radius: 25px;
-            padding: 60px 5%;
-            margin: 80px 5%;
+
+        .hot-topics {
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .topic-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            border-right: 4px solid var(--forum);
+            transition: all 0.3s;
+        }
+
+        .topic-item:hover {
+            transform: translateX(-10px);
+            background: rgba(33, 150, 243, 0.2);
+        }
+
+        /* ========== ناشر الفيديوهات ========== */
+        .smart-controls {
+            background: rgba(255, 64, 129, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 64, 129, 0.3);
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .control-item {
             text-align: center;
-            border: 2px solid rgba(255, 0, 0, 0.3);
-            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.1);
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s;
         }
-        
-        .tv-container {
+
+        .control-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 64, 129, 0.2);
+        }
+
+        .control-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.8rem;
+            background: rgba(255, 64, 129, 0.2);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--video);
+        }
+
+        .video-upload {
+            background: rgba(255, 64, 129, 0.08);
+            border: 3px dashed rgba(255, 64, 129, 0.4);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 25px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .video-upload:hover {
+            background: rgba(255, 64, 129, 0.15);
+            transform: scale(1.02);
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .platform {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .platform:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 64, 129, 0.2);
+        }
+
+        .platform.active {
+            background: rgba(255, 64, 129, 0.3);
+            border: 1px solid var(--video);
+        }
+
+        /* ========== التعليم الإلكتروني ========== */
+        .education-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .edu-stat {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .edu-stat:hover {
+            transform: translateY(-5px);
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .edu-stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .course-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
             position: relative;
-            max-width: 900px;
-            margin: 0 auto;
+            transition: all 0.3s;
+            cursor: pointer;
         }
-        
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--education);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        /* ========== القناة التلفزيونية ========== */
+        .tv-section {
+            padding: 100px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(204,0,0,0.1));
+            z-index: -1;
+        }
+
         .tv-screen {
             background: linear-gradient(135deg, #111, #000);
             border-radius: 20px;
             padding: 30px;
-            margin-bottom: 30px;
-            min-height: 450px;
+            margin: 40px auto;
+            max-width: 900px;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 15px solid #222;
-            box-shadow: 0 0 60px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 0 60px rgba(255,0,0,0.3);
             position: relative;
             overflow: hidden;
         }
-        
+
         .tv-screen::before {
             content: '';
             position: absolute;
@@ -498,28 +793,31 @@
             background: linear-gradient(
                 45deg,
                 transparent 30%,
-                rgba(255, 255, 255, 0.03) 50%,
+                rgba(255,255,255,0.03) 50%,
                 transparent 70%
             );
             animation: tvScan 3s linear infinite;
         }
-        
+
         @keyframes tvScan {
             0% { transform: translateY(-100%) rotate(45deg); }
             100% { transform: translateY(100%) rotate(45deg); }
         }
-        
-        /* قسم "هذه اللحظة" الجديد */
-        .moment-section {
-            background: linear-gradient(135deg, rgba(26, 35, 126, 0.9), rgba(13, 71, 161, 0.9));
-            padding: 80px 5%;
-            margin: 100px 0 60px;
-            border-radius: 40px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+
+        .live-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
-        
+
+        /* ========== قسم "هذه اللحظة" ========== */
+        .moment-section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
         .moment-section::before {
             content: '';
             position: absolute;
@@ -530,278 +828,79 @@
             background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
-            opacity: 0.15;
-            z-index: 0;
+            opacity: 0.1;
+            z-index: -1;
         }
-        
-        .moment-container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .moment-title {
-            text-align: center;
-            font-size: 4.5rem;
-            color: var(--gold);
-            margin-bottom: 60px;
-            text-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .moment-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 25%;
-            width: 50%;
-            height: 5px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            border-radius: 5px;
-        }
-        
+
         .moment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin-top: 50px;
         }
-        
+
         .moment-card {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255,255,255,0.12);
             backdrop-filter: blur(20px);
             border-radius: 25px;
-            padding: 40px 30px;
+            padding: 40px;
             text-align: center;
             border: 2px solid;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
-        
+
         .moment-card:hover {
-            transform: translateY(-20px) scale(1.05);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.3);
         }
-        
-        .moment-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: currentColor;
-            opacity: 0.7;
-        }
-        
-        .moment-card.finance {
-            border-color: var(--finance);
-            color: var(--finance);
-        }
-        
-        .moment-card.politics {
-            border-color: var(--politics);
-            color: var(--politics);
-        }
-        
-        .moment-card.art {
-            border-color: var(--art);
-            color: var(--art);
-        }
-        
-        .moment-card.sports {
-            border-color: var(--sports);
-            color: var(--sports);
-        }
-        
-        .moment-card.conflict {
-            border-color: var(--conflict);
-            color: var(--conflict);
-        }
-        
-        .moment-card.trend {
-            border-color: var(--trend);
-            color: var(--trend);
-        }
-        
+
+        .moment-card.finance { border-color: var(--finance); color: var(--finance); }
+        .moment-card.politics { border-color: var(--politics); color: var(--politics); }
+        .moment-card.art { border-color: var(--art); color: var(--art); }
+        .moment-card.sports { border-color: var(--sports); color: var(--sports); }
+        .moment-card.conflict { border-color: var(--conflict); color: var(--conflict); }
+        .moment-card.trend { border-color: var(--trend); color: var(--trend); }
+
         .moment-icon {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-            transition: transform 0.5s;
-        }
-        
-        .moment-card:hover .moment-icon {
-            transform: rotate(360deg) scale(1.2);
-        }
-        
-        .moment-card h3 {
-            font-size: 2.2rem;
-            color: white;
+            font-size: 4rem;
             margin-bottom: 20px;
-            font-weight: 700;
+            display: block;
         }
-        
-        .moment-card p {
-            font-size: 1.3rem;
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        
+
         .moment-stats {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-top: auto;
+            margin-top: 20px;
         }
-        
-        .moment-stat {
-            text-align: center;
-        }
-        
-        .moment-stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: white;
-            display: block;
-        }
-        
-        .moment-stat-label {
-            font-size: 1rem;
-            color: #ccc;
-        }
-        
-        .live-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #ff3333;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 1rem;
-            animation: pulse 2s infinite;
-            box-shadow: 0 4px 15px rgba(255, 51, 51, 0.4);
-        }
-        
-        /* الأزرار */
-        .action-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 20px 45px;
-            background: linear-gradient(45deg, var(--accent), #0097a7);
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 35px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-            text-align: center;
-            margin-top: 25px;
-            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .action-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .action-button:hover::before {
-            left: 100%;
-        }
-        
-        .action-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 188, 212, 0.5);
-        }
-        
-        .music .action-button {
-            background: linear-gradient(45deg, var(--music-color), #6a1b9a);
-            box-shadow: 0 10px 25px rgba(156, 39, 176, 0.3);
-        }
-        
-        .music .action-button:hover {
-            box-shadow: 0 20px 40px rgba(156, 39, 176, 0.5);
-        }
-        
-        .news .action-button {
-            background: linear-gradient(45deg, var(--news-color), #ef6c00);
-            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.3);
-        }
-        
-        .news .action-button:hover {
-            box-shadow: 0 20px 40px rgba(255, 152, 0, 0.5);
-        }
-        
-        .ai .action-button {
-            background: linear-gradient(45deg, var(--ai-color), #1b5e20);
-            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
-        }
-        
-        .ai .action-button:hover {
-            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.5);
-        }
-        
-        .forum .action-button {
-            background: linear-gradient(45deg, var(--forum-color), #0d47a1);
-            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.3);
-        }
-        
-        .forum .action-button:hover {
-            box-shadow: 0 20px 40px rgba(33, 150, 243, 0.5);
-        }
-        
-        /* الفوتر */
+
+        /* ========== الفوتر ========== */
         footer {
-            background: linear-gradient(135deg, rgba(5, 10, 35, 0.97), rgba(10, 20, 60, 0.97));
+            background: linear-gradient(135deg, rgba(5,10,35,0.97), rgba(10,20,60,0.97));
             padding: 80px 5% 40px;
-            margin-top: 120px;
+            margin-top: 100px;
             border-top: 3px solid var(--accent);
-            position: relative;
         }
-        
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 50px;
-            max-width: 1500px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .footer-section h3 {
             font-size: 2rem;
-            margin-bottom: 30px;
             color: var(--accent);
+            margin-bottom: 30px;
             position: relative;
             padding-bottom: 15px;
         }
-        
+
         .footer-section h3::after {
             content: '';
             position: absolute;
@@ -810,97 +909,142 @@
             width: 60px;
             height: 3px;
             background: var(--accent);
-            border-radius: 3px;
         }
-        
+
         .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             transition: transform 0.3s;
         }
-        
+
         .footer-links li:hover {
             transform: translateX(-10px);
         }
-        
+
         .footer-links a {
-            color: #d0d0d0;
+            color: #ccc;
             text-decoration: none;
             font-size: 1.2rem;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: color 0.3s;
         }
-        
+
         .footer-links a:hover {
             color: var(--accent);
-            padding-right: 15px;
         }
-        
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+
         .copyright {
             text-align: center;
             margin-top: 70px;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            color: #aaa;
-            font-size: 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #888;
+            font-size: 1.1rem;
             line-height: 1.8;
         }
-        
-        /* تأثيرات متحركة */
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
+
+        /* ========== الأزرار ========== */
+        .card-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 35px;
+            background: linear-gradient(45deg, var(--accent), #0097a7);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-top: 20px;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(-10px) rotate(-2deg); }
+
+        .music .card-button { background: linear-gradient(45deg, var(--music), #6a1b9a); }
+        .news .card-button { background: linear-gradient(45deg, var(--news), #ef6c00); }
+        .ai .card-button { background: linear-gradient(45deg, var(--ai), #1b5e20); }
+        .forum .card-button { background: linear-gradient(45deg, var(--forum), #0d47a1); }
+        .video .card-button { background: linear-gradient(45deg, var(--video), #f50057); }
+        .education .card-button { background: linear-gradient(45deg, var(--education), #2e7d32); }
+
+        .card-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
-        
-        .floating {
-            animation: float 8s ease-in-out infinite;
+
+        /* ========== التجاوب ========== */
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 4.5rem; }
+            .section-title { font-size: 3.5rem; }
         }
-        
-        .pulse {
-            animation: pulse 3s infinite;
-        }
-        
-        /* التجاوب */
+
         @media (max-width: 992px) {
             .navbar {
                 flex-direction: column;
-                gap: 25px;
-                padding: 20px 5%;
+                gap: 20px;
+                padding: 15px 5%;
             }
             
             .nav-links {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
             }
             
-            .hero h1 {
-                font-size: 3.5rem;
+            .hero h1 { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.6rem; }
+            
+            .components-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
             
-            .hero-subtitle {
-                font-size: 1.7rem;
-            }
-            
-            .moment-title {
-                font-size: 3.5rem;
+            .platforms-grid,
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            
             .components-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-grid,
+            .education-stats {
                 grid-template-columns: 1fr;
             }
             
@@ -908,44 +1052,106 @@
                 grid-template-columns: 1fr;
             }
             
-            .moment-card {
-                padding: 30px 20px;
+            .tv-screen {
+                min-height: 400px;
+                padding: 20px;
+                border-width: 10px;
             }
             
-            .hero h1 {
-                font-size: 2.8rem;
+            .hero-stats {
+                gap: 30px;
             }
             
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .moment-title {
+            .stat-number {
                 font-size: 2.8rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .nav-link {
                 padding: 10px 15px;
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .logo {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .hero {
-                padding: 180px 5% 80px;
+            .cta-button {
+                padding: 18px 30px;
+                font-size: 1.2rem;
             }
             
             .component-card {
                 padding: 30px 20px;
             }
+            
+            .card-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* ========== تأثيرات خاصة ========== */
+        .live-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff3333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, var(--accent), #0097a7);
+            color: white;
+            border-radius: 15px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 400px;
+            border-right: 5px solid var(--accent);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
         }
     </style>
 </head>
 <body>
+    <!-- النجوم المتلألئة -->
+    <div class="stars" id="stars"></div>
+
     <!-- شريط التنقل -->
     <nav class="navbar">
         <div class="logo">
@@ -953,457 +1159,531 @@
             منصة المستقبل الذكية
         </div>
         <div class="nav-links">
-            <a href="#music" class="nav-link active"><i class="fas fa-music"></i> الموسيقى</a>
-            <a href="#news" class="nav-link"><i class="fas fa-newspaper"></i> الأخبار</a>
-            <a href="#ai" class="nav-link"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a>
-            <a href="#forum" class="nav-link"><i class="fas fa-users"></i> المنتدى</a>
+            <a href="#home" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#components" class="nav-link"><i class="fas fa-th-large"></i> المكونات</a>
             <a href="#tv" class="nav-link"><i class="fas fa-tv"></i> القناة الذكية</a>
             <a href="#moment" class="nav-link"><i class="fas fa-bolt"></i> هذه اللحظة</a>
+            <a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> عن المنصة</a>
         </div>
     </nav>
 
     <!-- القسم الرئيسي -->
-    <section class="hero">
+    <section class="hero" id="home">
         <h1 class="floating">🚀 ثورة التكنولوجيا العربية الشاملة</h1>
         <p class="hero-subtitle">
-            منصة متكاملة تجمع بين الذكاء الاصطناعي المتقدم، مكتبة موسيقية ضخمة، 
-            قارئ أخبار ذكي، قناة تلفزيونية تفاعلية، قسم "هذه اللحظة" الحصري،
-            ومنتدى اجتماعي آمن يغنيك عن فيسبوك وتويتر للأبد!
+            منصة متكاملة تجمع بين الذكاء الاصطناعي المتقدم، مكتبة موسيقية ضخمة، قارئ أخبار ذكي، 
+            قناة تلفزيونية تفاعلية، قسم "هذه اللحظة" الحصري، ومنتدى اجتماعي آمن يغنيك عن 
+            فيسبوك وتويتر للأبد!
         </p>
-        <a href="#components" class="action-button pulse">
+        <a href="#components" class="cta-button">
             <i class="fas fa-play"></i> ابدأ الرحلة الآن
         </a>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">8</span>
+                <span class="stat-label">أقسام متكاملة</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">أمان وخصوصية</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">دعم فني</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">إمكانيات</span>
+            </div>
+        </div>
     </section>
 
     <!-- المكونات الرئيسية -->
-    <div class="components-grid" id="components">
-        <!-- مكتبة الموسيقى -->
-        <div class="component-card music" id="music">
-            <div class="component-header">
-                <div class="component-icon">
-                    <i class="fas fa-headphones"></i>
+    <section class="components-section" id="components">
+        <h2 class="section-title">المكونات الرئيسية</h2>
+        
+        <div class="components-grid">
+            <!-- مكتبة الموسيقى -->
+            <div class="component-card music">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="card-title">مكتبة الموسيقى الأسطورية</h3>
                 </div>
-                <h2 class="component-title">مكتبة الموسيقى الأسطورية</h2>
+                <p class="card-desc">
+                    أكبر مكتبة موسيقية عربية وعالمية، مع خوارزميات ذكية تفهم ذوقك 
+                    وتقدم لك مقترحات تناسب مزاجك. استمع لأكثر من مليون مقطع موسيقي 
+                    بجودة استديو احترافية.
+                </p>
+                
+                <div class="music-player">
+                    <h4 style="color: var(--music); margin-bottom: 20px;">
+                        <i class="fas fa-play-circle"></i> التشغيل الحي
+                    </h4>
+                    <div class="track-list">
+                        <div class="track-item playing">
+                            <span>🎵 أغنية الثورة - أم كلثوم</span>
+                            <span>03:45</span>
+                        </div>
+                        <div class="track-item">
+                            <span>🎵 نوستالجيا - فيروز</span>
+                            <span>04:20</span>
+                        </div>
+                        <div class="track-item">
+                            <span>🎶 موسيقى حماسية - تأليف خاص</span>
+                            <span>05:15</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 20px;">
+                        <button class="card-button" onclick="playMusic()">
+                            <i class="fas fa-play"></i> تشغيل
+                        </button>
+                        <button class="card-button" style="background: #666;">
+                            <i class="fas fa-random"></i> عشوائي
+                        </button>
+                    </div>
+                </div>
+                
+                <a href="#" class="card-button">
+                    <i class="fas fa-headphones"></i> استمع الآن
+                </a>
             </div>
-            <p class="component-desc">
-                أكبر مكتبة موسيقية عربية وعالمية، مع خوارزميات ذكية تفهم ذوقك 
-                وتقدم لك مقترحات تناسب مزاجك. استمع لأكثر من مليون مقطع موسيقي 
-                بجودة استديو احترافية.
-            </p>
-            
-            <div class="music-player">
-                <h3 style="color: var(--music-color); margin-bottom: 20px;">
-                    <i class="fas fa-play-circle"></i> تشغيل حي
-                </h3>
-                <div class="track-list">
-                    <div class="track-item playing">
-                        <span>🎵 أغنية الثورة - أم كلثوم</span>
-                        <span>03:45</span>
-                    </div>
-                    <div class="track-item">
-                        <span>🎵 نوستالجيا - فيروز</span>
-                        <span>04:20</span>
-                    </div>
-                    <div class="track-item">
-                        <span>🎶 موسيقى حماسية - تأليف خاص</span>
-                        <span>05:15</span>
-                    </div>
-                    <div class="track-item">
-                        <span>🎵 صوت الطبيعة - مهدئ</span>
-                        <span>06:30</span>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
-                    <button class="action-button" style="padding: 15px 30px;">
-                        <i class="fas fa-play"></i> تشغيل
-                    </button>
-                    <button class="action-button" style="padding: 15px 30px; background: linear-gradient(45deg, #757575, #424242);">
-                        <i class="fas fa-pause"></i> إيقاف
-                    </button>
-                    <button class="action-button" style="padding: 15px 30px; background: linear-gradient(45deg, #9c27b0, #6a1b9a);">
-                        <i class="fas fa-random"></i> عشوائي
-                    </button>
-                </div>
-            </div>
-            
-            <a href="#" class="action-button">
-                <i class="fas fa-music"></i> تصفح المكتبة الكاملة
-            </a>
-        </div>
 
-        <!-- قارئ الأخبار الذكي -->
-        <div class="component-card news" id="news">
-            <div class="component-header">
-                <div class="component-icon">
-                    <i class="fas fa-newspaper"></i>
+            <!-- قارئ الأخبار الذكي -->
+            <div class="component-card news">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3 class="card-title">قارئ الأخبار الذكي</h3>
                 </div>
-                <h2 class="component-title">قارئ الأخبار الذكي</h2>
+                <p class="card-desc">
+                    نظام ذكي يبحث في آلاف المصادر ويقدم لك أهم الأخبار مصنفة حسب 
+                    اهتماماتك. مع تحليل المشاعر وتلخيص تلقائي وترجمة فورية لأي لغة.
+                </p>
+                
+                <div class="news-feed">
+                    <div class="news-item">
+                        <span class="news-category">💰 اقتصاد</span>
+                        <h4>ارتفاع المؤشرات العربية بنسبة 15% هذا الشهر</h4>
+                        <small>منذ ساعتين</small>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-category">🔬 تكنولوجيا</span>
+                        <h4>اختراق علمي: معالج جديد أسرع 100 مرة</h4>
+                        <small>منذ 5 ساعات</small>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-category">🎨 ثقافة</span>
+                        <h4>مهرجان القاهرة السينمائي يعلن عن أفلامه المنافسة</h4>
+                        <small>منذ يوم</small>
+                    </div>
+                </div>
+                
+                <a href="#" class="card-button">
+                    <i class="fas fa-book-reader"></i> اقرأ الأخبار
+                </a>
             </div>
-            <p class="component-desc">
-                نظام ذكي يبحث في آلاف المصابع ويقدم لك أهم الأخبار مصنفة حسب 
-                اهتماماتك. مع تحليل المشاعر وتلخيص تلقائي وترجمة فورية لأي لغة.
-            </p>
-            
-            <div class="news-feed">
-                <div class="news-item">
-                    <span class="news-category">💰 اقتصاد</span>
-                    <h4>ارتفاع المؤشرات العربية بنسبة 15% هذا الشهر</h4>
-                    <p>أظهرت التقارير نمواً قياسياً في الأسواق العربية...</p>
-                    <small>منذ ساعتين</small>
-                </div>
-                <div class="news-item">
-                    <span class="news-category">🔬 تكنولوجيا</span>
-                    <h4>اختراق علمي: معالج جديد أسرع 100 مرة</h4>
-                    <p>شركة ناشئة تعلن عن معالج كمي يحطم الأرقام القياسية...</p>
-                    <small>منذ 5 ساعات</small>
-                </div>
-                <div class="news-item">
-                    <span class="news-category">🎨 ثقافة</span>
-                    <h4>مهرجان القاهرة السينمائي يعلن عن أفلامه المنافسة</h4>
-                    <p>45 فيلماً من 30 دولة تتنافس على الجوائز الرئيسية...</p>
-                    <small>منذ يوم</small>
-                </div>
-                <div class="news-item">
-                    <span class="news-category">⚽ رياضة</span>
-                    <h4>فريق مصر يتأهل لكأس العالم 2026</h4>
-                    <p>انتصار تاريخي بثلاثية نظيفة في المباراة الحاسمة...</p>
-                    <small>منذ يومين</small>
-                </div>
-            </div>
-            
-            <a href="#" class="action-button">
-                <i class="fas fa-book-reader"></i> اقرأ المزيد من الأخبار
-            </a>
-        </div>
 
-        <!-- خبير الذكاء الاصطناعي -->
-        <div class="component-card ai" id="ai">
-            <div class="component-header">
-                <div class="component-icon">
-                    <i class="fas fa-robot"></i>
+            <!-- خبير الذكاء الاصطناعي -->
+            <div class="component-card ai">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="card-title">خبير الذكاء الاصطناعي</h3>
                 </div>
-                <h2 class="component-title">خبير الذكاء الاصطناعي</h2>
+                <p class="card-desc">
+                    مساعد ذكي شخصي يتحدث العربية بطلاقة، يجيب على أسئلتك، 
+                    يساعدك في البحث، يقدم نصائح مخصصة، ويكتب لك النصوص باحترافية.
+                </p>
+                
+                <div class="ai-chat">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai">
+                            مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا...">
+                        <button class="card-button" onclick="sendMessage()" style="padding: 15px 25px;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <a href="#" class="card-button" onclick="startChat()">
+                    <i class="fas fa-comments"></i> تحدث الآن
+                </a>
             </div>
-            <p class="component-desc">
-                مساعد ذكي شخصي يتحدث العربية بطلاقة، يجيب على أسئلتك، 
-                يساعدك في البحث، يقدم نصائح مخصصة، ويكتب لك النصوص باحترافية.
-            </p>
-            
-            <div class="ai-chat">
-                <div class="chat-messages">
-                    <div class="message ai">
-                        مرحباً! أنا مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟
-                    </div>
-                    <div class="message user">
-                        أخبرني عن أهم التطورات التكنولوجية اليوم
-                    </div>
-                    <div class="message ai">
-                        هناك 3 تطورات رئيسية: 1) معالج كمي جديد 2) بطارية تدوم أسبوعاً 3) شبكة 6G تجريبية
-                    </div>
-                </div>
-                <div class="chat-input">
-                    <input type="text" placeholder="اكتب سؤالك هنا...">
-                    <button class="action-button" style="padding: 15px 30px;">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <a href="#" class="action-button">
-                <i class="fas fa-comments"></i> تحدث مع الخبير الآن
-            </a>
-        </div>
 
-        <!-- منتدى مصر الإخبارية -->
-        <div class="component-card forum" id="forum">
-            <div class="component-header">
-                <div class="component-icon">
-                    <i class="fas fa-users"></i>
+            <!-- منتدى مصر الإخبارية -->
+            <div class="component-card forum">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">منتدى مصر الإخبارية</h3>
                 </div>
-                <h2 class="component-title">منتدى مصر الإخبارية</h2>
-            </div>
-            <p class="component-desc">
-                منصة اجتماعية آمنة 100%، خالية من الأخبار الكاذبة والمحتوى المسيء. 
-                مجتمع مثقف يتبادل الأفكار البناءة ويناقش القضايا المهمة باحترام.
-            </p>
-            
-            <div class="forum-stats">
-                <div class="stat-box">
-                    <span class="stat-number">158K+</span>
-                    <span class="stat-label">عضو نشط</span>
+                <p class="card-desc">
+                    منصة اجتماعية آمنة 100%، خالية من الأخبار الكاذبة والمحتوى المسيء. 
+                    مجتمع مثقف يتبادل الأفكار البناءة ويناقش القضايا المهمة باحترام.
+                </p>
+                
+                <div class="forum-stats">
+                    <div class="stat-box">
+                        <span class="stat-number">158K+</span>
+                        <span class="stat-label">عضو نشط</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">62K+</span>
+                        <span class="stat-label">موضوع نشط</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">رضا الأعضاء</span>
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <span class="stat-number">62K+</span>
-                    <span class="stat-label">موضوع نشط</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">99.9%</span>
-                    <span class="stat-label">رضا الأعضاء</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">0</span>
-                    <span class="stat-label">محتوى مسيء</span>
-                </div>
-            </div>
-            
-            <div style="margin: 25px 0;">
-                <h4 style="color: var(--forum-color); margin-bottom: 15px; font-size: 1.5rem;">
-                    <i class="fas fa-fire"></i> المواضيع الساخنة:
-                </h4>
-                <ul style="list-style: none; color: #e0e0e0;">
-                    <li style="padding: 12px; border-right: 4px solid var(--forum-color); margin: 8px 0; background: rgba(33, 150, 243, 0.1); border-radius: 10px;">
+                
+                <div class="hot-topics">
+                    <h4 style="color: var(--forum); margin-bottom: 15px;">
+                        <i class="fas fa-fire"></i> المواضيع الساخنة
+                    </h4>
+                    <div class="topic-item">
                         📈 مستقبل الاقتصاد المصري 2030 - 1.2K تعليق
-                    </li>
-                    <li style="padding: 12px; border-right: 4px solid var(--forum-color); margin: 8px 0; background: rgba(33, 150, 243, 0.1); border-radius: 10px;">
-                        🔬 الثورة التكنولوجية في التعليم - 845 تعليق
-                    </li>
-                    <li style="padding: 12px; border-right: 4px solid var(--forum-color); margin: 8px 0; background: rgba(33, 150, 243, 0.1); border-radius: 10px;">
-                        🎨 إحياء التراث الثقافي العربي - 612 تعليق
-                    </li>
-                </ul>
-            </div>
-            
-            <a href="#" class="action-button">
-                <i class="fas fa-sign-in-alt"></i> انضم للمجتمع الآمن
-            </a>
-        </div>
-    </div>
-
-    <!-- القناة التلفزيونية الذكية -->
-    <section class="tv-channel" id="tv">
-        <div class="tv-container">
-            <h2 style="font-size: 3.5rem; color: #ff3333; margin-bottom: 40px; text-shadow: 0 5px 20px rgba(255, 51, 51, 0.3);">
-                <i class="fas fa-tv"></i> القناة الذكية المباشرة
-            </h2>
-            <p style="font-size: 1.7rem; max-width: 900px; margin: 0 auto 50px; color: #f0f0f0; line-height: 1.8;">
-                بث حي 24/7 مع محتوى تفاعلي، تحليلات ذكية، برامج حوارية مباشرة، 
-                ونظام تصويت فوري للمشاهدين. الثورة التلفزيونية تبدأ من هنا!
-            </p>
-            
-            <div class="tv-screen">
-                <div style="text-align: center; z-index: 2; position: relative;">
-                    <div style="font-size: 6rem; color: #ff3333; margin-bottom: 30px; animation: pulse 2s infinite;">
-                        <i class="fas fa-broadcast-tower"></i>
                     </div>
-                    <h3 style="font-size: 2.8rem; color: white; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-                        📡 البث المباشر الآن
-                    </h3>
-                    <p style="font-size: 2.2rem; color: var(--gold); font-weight: 700; margin-bottom: 30px;">
-                        برنامج "مستقبل التكنولوجيا" مع ضيوف خاصين
-                    </p>
-                    <div style="margin-top: 40px; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
-                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.25); border-color: rgba(255, 51, 51, 0.5);">
-                            <span class="stat-number" id="viewersCount">68.5K</span>
-                            <span class="stat-label">مشاهد مباشر</span>
+                    <div class="topic-item">
+                        🔬 الثورة التكنولوجية في التعليم - 845 تعليق
+                    </div>
+                </div>
+                
+                <a href="#" class="card-button" onclick="joinForum()">
+                    <i class="fas fa-sign-in-alt"></i> انضم الآن
+                </a>
+            </div>
+
+            <!-- ناشر الفيديوهات الذكي -->
+            <div class="component-card video">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="card-title">ناشر الفيديوهات الذكي</h3>
+                </div>
+                <p class="card-desc">
+                    أول منصة في العالم العربي تستخدم الذكاء الاصطناعي لتحرير ونشر الفيديو تلقائياً. 
+                    تحمّل مقطعك، ويقوم النظام بتحريره، إضافة مؤثرات، كتابة نصوص، واختيار أفضل وسائل التوزيع.
+                </p>
+                
+                <div class="smart-controls">
+                    <h4 style="color: var(--video); margin-bottom: 15px;">
+                        <i class="fas fa-magic"></i> التحكم الذكي
+                    </h4>
+                    <div class="control-grid">
+                        <div class="control-item">
+                            <div class="control-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <span>تحرير ذكي</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
                         </div>
-                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.25); border-color: rgba(255, 51, 51, 0.5);">
-                            <span class="stat-number">94%</span>
-                            <span class="stat-label">تفاعل إيجابي</span>
-                        </div>
-                        <div class="stat-box" style="background: rgba(255, 51, 51, 0.25); border-color: rgba(255, 51, 51, 0.5);">
-                            <span class="stat-number">2.1K</span>
-                            <span class="stat-label">تصويت مباشر</span>
+                        <div class="control-item">
+                            <div class="control-icon">
+                                <i class="fas fa-closed-captioning"></i>
+                            </div>
+                            <span>إضافة نصوص</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 98%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                <div class="video-upload" onclick="uploadVideo()">
+                    <i class="fas fa-cloud-upload-alt" style="font-size: 4rem; color: var(--video);"></i>
+                    <p style="margin: 20px 0;">اسحب وأفلت ملف الفيديو هنا</p>
+                    <small>يدعم: MP4, MOV, AVI | حتى 4GB</small>
+                </div>
+                
+                <div class="platforms-grid">
+                    <div class="platform" onclick="togglePlatform(this)">
+                        <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                        <span>YouTube</span>
+                    </div>
+                    <div class="platform" onclick="togglePlatform(this)">
+                        <i class="fab fa-facebook" style="color: #1877F2;"></i>
+                        <span>Facebook</span>
+                    </div>
+                    <div class="platform active" onclick="togglePlatform(this)">
+                        <i class="fab fa-tiktok" style="color: #000;"></i>
+                        <span>TikTok</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="card-button" onclick="publishVideo()">
+                    <i class="fas fa-rocket"></i> ابدأ النشر
+                </a>
             </div>
-            
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
-                <button class="action-button" style="background: linear-gradient(45deg, #ff3333, #cc0000); padding: 20px 40px;">
-                    <i class="fas fa-play"></i> مشاهدة مباشرة
-                </button>
-                <button class="action-button" style="background: linear-gradient(45deg, #666, #333); padding: 20px 40px;">
-                    <i class="fas fa-comments"></i> غرفة المحادثة
-                </button>
-                <button class="action-button" style="background: linear-gradient(45deg, #4CAF50, #2E7D32); padding: 20px 40px;">
-                    <i class="fas fa-vote-yea"></i> التصويت المباشر
-                </button>
-                <button class="action-button" style="background: linear-gradient(45deg, #9C27B0, #6A1B9A); padding: 20px 40px;">
-                    <i class="fas fa-archive"></i> الأرشيف
-                </button>
+
+            <!-- التعليم الإلكتروني المبدع -->
+            <div class="component-card education">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title">التعليم الإلكتروني المبدع</h3>
+                </div>
+                <p class="card-desc">
+                    منصة تعليمية تفاعلية تجمع بين الذكاء الاصطناعي والواقع الافتراضي لتقديم تجربة تعلم شخصية. 
+                    دورات في البرمجة، التسويق، الفن، العلوم، مع شهادات معتمدة عالمياً.
+                </p>
+                
+                <div class="education-stats">
+                    <div class="edu-stat">
+                        <div class="edu-stat-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div>
+                            <span style="font-size: 1.8rem; font-weight: bold; color: var(--education);">1,250+</span>
+                            <div style="color: #ccc; font-size: 0.9rem;">دورة متخصصة</div>
+                        </div>
+                    </div>
+                    <div class="edu-stat">
+                        <div class="edu-stat-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <span style="font-size: 1.8rem; font-weight: bold; color: var(--education);">85K+</span>
+                            <div style="color: #ccc; font-size: 0.9rem;">خريج ناجح</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="courses-grid">
+                    <div class="course-card" onclick="enrollCourse('ai')">
+                        <div class="course-badge" style="background: #FF5722;">🔥 الأكثر مبيعاً</div>
+                        <h4>الذكاء الاصطناعي للمبتدئين</h4>
+                        <div style="color: #aaa; margin: 10px 0; font-size: 0.9rem;">
+                            <span><i class="fas fa-clock"></i> 40 ساعة</span>
+                        </div>
+                        <div style="color: var(--education); font-weight: bold;">مجاناً</div>
+                    </div>
+                    
+                    <div class="course-card" onclick="enrollCourse('web')">
+                        <div class="course-badge" style="background: #2196F3;">🆕 جديد</div>
+                        <h4>برمجة تطبيقات الويب</h4>
+                        <div style="color: #aaa; margin: 10px 0; font-size: 0.9rem;">
+                            <span><i class="fas fa-clock"></i> 60 ساعة</span>
+                        </div>
+                        <div style="color: var(--education); font-weight: bold;">$99</div>
+                    </div>
+                </div>
+                
+                <div class="tech-tags">
+                    <span class="tech-tag">🧠 تعلم تكيفي</span>
+                    <span class="tech-tag">🤖 مساعد ذكي</span>
+                    <span class="tech-tag">👓 واقع افتراضي</span>
+                </div>
+                
+                <a href="#" class="card-button" onclick="exploreCourses()">
+                    <i class="fas fa-graduation-cap"></i> ابدأ التعلم
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- قسم "هذه اللحظة" الجديد -->
+    <!-- القناة التلفزيونية الذكية -->
+    <section class="tv-section" id="tv">
+        <h2 class="section-title" style="color: #ff3333;">
+            <i class="fas fa-tv"></i> القناة الذكية المباشرة
+        </h2>
+        <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto 40px; color: #f0f0f0;">
+            بث حي 24/7 مع محتوى تفاعلي، تحليلات ذكية، برامج حوارية مباشرة، 
+            ونظام تصويت فوري للمشاهدين.
+        </p>
+        
+        <div class="tv-screen">
+            <div style="text-align: center;">
+                <i class="fas fa-broadcast-tower" style="font-size: 5rem; color: #ff3333; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">البث المباشر الآن</h3>
+                <p style="font-size: 1.8rem; color: var(--gold);">برنامج "مستقبل التكنولوجيا"</p>
+                
+                <div class="live-stats">
+                    <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
+                        <span class="stat-number" id="viewersCount">68.5K</span>
+                        <span class="stat-label">مشاهد مباشر</span>
+                    </div>
+                    <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
+                        <span class="stat-number">94%</span>
+                        <span class="stat-label">تفاعل إيجابي</span>
+                    </div>
+                    <div class="stat-box" style="background: rgba(255, 51, 51, 0.2);">
+                        <span class="stat-number">2.1K</span>
+                        <span class="stat-label">تصويت مباشر</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+            <button class="cta-button" style="background: linear-gradient(45deg, #ff3333, #cc0000);">
+                <i class="fas fa-play"></i> مشاهدة مباشرة
+            </button>
+            <button class="cta-button" style="background: linear-gradient(45deg, #666, #333);">
+                <i class="fas fa-comments"></i> غرفة المحادثة
+            </button>
+            <button class="cta-button" style="background: linear-gradient(45deg, #4CAF50, #2E7D32);">
+                <i class="fas fa-vote-yea"></i> التصويت المباشر
+            </button>
+        </div>
+    </section>
+
+    <!-- قسم "هذه اللحظة" -->
     <section class="moment-section" id="moment">
-        <div class="moment-container">
-            <h2 class="moment-title floating">
-                <i class="fas fa-bolt"></i> هذه اللحظة
-                <span class="live-badge">مباشر</span>
-            </h2>
-            
-            <div class="moment-grid">
-                <!-- المال والبورصات -->
-                <div class="moment-card finance" onclick="showMomentDetails('finance')">
-                    <div class="moment-icon">
-                        <i class="fas fa-chart-line"></i>
+        <h2 class="section-title" style="color: var(--gold);">
+            <i class="fas fa-bolt"></i> هذه اللحظة
+            <span class="live-badge">مباشر</span>
+        </h2>
+        
+        <div class="moment-grid">
+            <div class="moment-card finance" onclick="showMoment('finance')">
+                <i class="moment-icon fas fa-chart-line"></i>
+                <h3>المال والبورصات</h3>
+                <p>تحديثات حية للأسواق المالية، أسعار العملات، المؤشرات العالمية، ونصائح استثمارية ذكية</p>
+                <div class="moment-stats">
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--finance);">+2.8%</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">مؤشر EGX</div>
                     </div>
-                    <h3>المال والبورصات</h3>
-                    <p>تحديثات حية للأسواق المالية، أسعار العملات، المؤشرات العالمية، ونصائح استثمارية ذكية</p>
-                    <div class="moment-stats">
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">+2.8%</span>
-                            <span class="moment-stat-label">مؤشر EGX</span>
-                        </div>
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">$89.2</span>
-                            <span class="moment-stat-label">برميل النفط</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- السياسة والتطورات -->
-                <div class="moment-card politics" onclick="showMomentDetails('politics')">
-                    <div class="moment-icon">
-                        <i class="fas fa-landmark"></i>
-                    </div>
-                    <h3>السياسة والتطورات</h3>
-                    <p>أهم القرارات السياسية، التطورات الدبلوماسية، التحالفات الدولية، والبيانات الرسمية</p>
-                    <div class="moment-stats">
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">12</span>
-                            <span class="moment-stat-label">قرار جديد</span>
-                        </div>
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">3</span>
-                            <span class="moment-stat-label">قمة دولية</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الفن والسينما -->
-                <div class="moment-card art" onclick="showMomentDetails('art')">
-                    <div class="moment-icon">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <h3>الفن والسينما</h3>
-                    <p>أحدث الأعمال الفنية، عروض السينما، الحفلات الموسيقية، والمهرجانات الثقافية العالمية</p>
-                    <div class="moment-stats">
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">8.9</span>
-                            <span class="moment-stat-label">تقييم الفيلم</span>
-                        </div>
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">45K</span>
-                            <span class="moment-stat-label">حضور حفل</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الرياضة -->
-                <div class="moment-card sports" onclick="showMomentDetails('sports')">
-                    <div class="moment-icon">
-                        <i class="fas fa-futbol"></i>
-                    </div>
-                    <h3>الرياضة</h3>
-                    <p>نتائج المباريات، التحليلات الرياضية، انتقالات اللاعبين، والبث المباشر للأحداث الكبرى</p>
-                    <div class="moment-stats">
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">3-1</span>
-                            <span class="moment-stat-label">آخر مباراة</span>
-                        </div>
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">24</span>
-                            <span class="moment-stat-label">حدث مباشر</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- الصراعات في العالم -->
-                <div class="moment-card conflict" onclick="showMomentDetails('conflict')">
-                    <div class="moment-icon">
-                        <i class="fas fa-peace"></i>
-                    </div>
-                    <h3>الصراعات في العالم</h3>
-                    <p>تحليلات استراتيجية، تطورات النزاعات، محادثات السلام، وجهود الأمم المتحدة والإقليمية</p>
-                    <div class="moment-stats">
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">2</span>
-                            <span class="moment-stat-label">محادثة سلام</span>
-                        </div>
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">87%</span>
-                            <span class="moment-stat-label">دعم شعبي</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- ترند اللحظة -->
-                <div class="moment-card trend" onclick="showMomentDetails('trend')">
-                    <div class="moment-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3>ترند اللحظة</h3>
-                    <p>أكثر المواضيع تداولاً، الهاشتاجات الشائعة، الشخصيات الأكثر حديثاً، والظواهر الاجتماعية</p>
-                    <div class="moment-stats">
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">#تحدي_المستقبل</span>
-                            <span class="moment-stat-label">الهاشتاق الأول</span>
-                        </div>
-                        <div class="moment-stat">
-                            <span class="moment-stat-number">2.5M</span>
-                            <span class="moment-stat-label">مشاركة</span>
-                        </div>
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--finance);">$89.2</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">برميل النفط</div>
                     </div>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 50px;">
-                <button class="action-button" onclick="refreshMoments()" style="padding: 20px 50px; font-size: 1.5rem;">
-                    <i class="fas fa-sync-alt"></i> تحديث اللحظة الآني
-                </button>
-                <p style="color: #ccc; margin-top: 20px; font-size: 1.2rem;">
-                    <i class="fas fa-info-circle"></i>
-                    يتم تحديث البيانات كل 30 ثانية بشكل تلقائي
-                </p>
+            <div class="moment-card politics" onclick="showMoment('politics')">
+                <i class="moment-icon fas fa-landmark"></i>
+                <h3>السياسة والتطورات</h3>
+                <p>أهم القرارات السياسية، التطورات الدبلوماسية، التحالفات الدولية، والبيانات الرسمية</p>
+                <div class="moment-stats">
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--politics);">12</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">قرار جديد</div>
+                    </div>
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--politics);">3</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">قمة دولية</div>
+                    </div>
+                </div>
             </div>
+            
+            <div class="moment-card art" onclick="showMoment('art')">
+                <i class="moment-icon fas fa-film"></i>
+                <h3>الفن والسينما</h3>
+                <p>أحدث الأعمال الفنية، عروض السينما، الحفلات الموسيقية، والمهرجانات الثقافية العالمية</p>
+                <div class="moment-stats">
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--art);">8.9</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">تقييم الفيلم</div>
+                    </div>
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--art);">45K</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">حضور حفل</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="moment-card sports" onclick="showMoment('sports')">
+                <i class="moment-icon fas fa-futbol"></i>
+                <h3>الرياضة</h3>
+                <p>نتائج المباريات، التحليلات الرياضية، انتقالات اللاعبين، والبث المباشر للأحداث الكبرى</p>
+                <div class="moment-stats">
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--sports);">3-1</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">آخر مباراة</div>
+                    </div>
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--sports);">24</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">حدث مباشر</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="moment-card conflict" onclick="showMoment('conflict')">
+                <i class="moment-icon fas fa-peace"></i>
+                <h3>الصراعات في العالم</h3>
+                <p>تحليلات استراتيجية، تطورات النزاعات، محادثات السلام، وجهود الأمم المتحدة والإقليمية</p>
+                <div class="moment-stats">
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--conflict);">2</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">محادثة سلام</div>
+                    </div>
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--conflict);">87%</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">دعم شعبي</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="moment-card trend" onclick="showMoment('trend')">
+                <i class="moment-icon fas fa-fire"></i>
+                <h3>ترند اللحظة</h3>
+                <p>أكثر المواضيع تداولاً، الهاشتاجات الشائعة، الشخصيات الأكثر حديثاً، والظواهر الاجتماعية</p>
+                <div class="moment-stats">
+                    <div>
+                        <span style="font-size: 1.5rem; font-weight: bold; color: var(--trend);">#تحدي_المستقبل</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">الهاشتاق الأول</div>
+                    </div>
+                    <div>
+                        <span style="font-size: 2rem; font-weight: bold; color: var(--trend);">2.5M</span>
+                        <div style="color: #ccc; font-size: 0.9rem;">مشاركة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="cta-button" onclick="refreshMoments()" style="background: linear-gradient(45deg, var(--accent), var(--gold));">
+                <i class="fas fa-sync-alt"></i> تحديث اللحظة
+            </button>
+            <p style="color: #ccc; margin-top: 20px; font-size: 1.2rem;">
+                <i class="fas fa-info-circle"></i> يتم تحديث البيانات كل 30 ثانية
+            </p>
         </div>
     </section>
 
     <!-- الفوتر -->
-    <footer>
+    <footer id="about">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>منصة المستقبل الذكية</h3>
-                <p style="color: #d0d0d0; line-height: 1.8; font-size: 1.2rem;">
+                <p style="color: #ccc; line-height: 1.8; margin-top: 20px;">
                     ثورة تكنولوجية عربية شاملة، تجمع بين الإبداع والأمان 
                     والذكاء الاصطناعي لخلق تجربة رقمية لا مثيل لها.
                     نحن نعيد تعريف التواصل الاجتماعي والإعلام الرقمي.
                 </p>
-                <div style="display: flex; gap: 20px; margin-top: 30px;">
-                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
-                         onmouseover="this.style.transform='scale(1.2)'" 
-                         onmouseout="this.style.transform='scale(1)'">
-                        <i class="fab fa-android"></i>
-                    </div>
-                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
-                         onmouseover="this.style.transform='scale(1.2)'" 
-                         onmouseout="this.style.transform='scale(1)'">
-                        <i class="fab fa-apple"></i>
-                    </div>
-                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
-                         onmouseover="this.style.transform='scale(1.2)'" 
-                         onmouseout="this.style.transform='scale(1)'">
-                        <i class="fab fa-windows"></i>
-                    </div>
-                    <div style="font-size: 2.5rem; color: var(--accent); cursor: pointer; transition: all 0.3s;" 
-                         onmouseover="this.style.transform='scale(1.2)'" 
-                         onmouseout="this.style.transform='scale(1)'">
-                        <i class="fab fa-linux"></i>
-                    </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             
             <div class="footer-section">
                 <h3>روابط سريعة</h3>
                 <ul class="footer-links">
-                    <li><a href="#music"><i class="fas fa-arrow-left"></i> مكتبة الموسيقى</a></li>
-                    <li><a href="#news"><i class="fas fa-arrow-left"></i> قارئ الأخبار</a></li>
-                    <li><a href="#ai"><i class="fas fa-arrow-left"></i> الذكاء الاصطناعي</a></li>
-                    <li><a href="#forum"><i class="fas fa-arrow-left"></i> المنتدى الاجتماعي</a></li>
+                    <li><a href="#home"><i class="fas fa-arrow-left"></i> الرئيسية</a></li>
+                    <li><a href="#components"><i class="fas fa-arrow-left"></i> المكونات</a></li>
                     <li><a href="#tv"><i class="fas fa-arrow-left"></i> القناة الذكية</a></li>
-                    <li><a href="#moment"><i class="fas fa-arrow-left"></i> قسم هذه اللحظة</a></li>
+                    <li><a href="#moment"><i class="fas fa-arrow-left"></i> هذه اللحظة</a></li>
+                    <li><a href="#about"><i class="fas fa-arrow-left"></i> عن المنصة</a></li>
                 </ul>
             </div>
             
@@ -1412,26 +1692,22 @@
                 <ul class="footer-links">
                     <li><a href="mailto:info@future-platform.com"><i class="fas fa-envelope"></i> info@future-platform.com</a></li>
                     <li><a href="tel:+201001234567"><i class="fas fa-phone"></i> +20 100 123 4567</a></li>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر - المقر الرئيسي</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</a></li>
                     <li><a href="#"><i class="fas fa-headset"></i> الدعم الفني 24/7</a></li>
-                    <li><a href="#"><i class="fas fa-file-contract"></i> الشروط والأحكام</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>حمل التطبيق</h3>
-                <p style="color: #d0d0d0; margin-bottom: 25px; font-size: 1.2rem;">
-                    حمل تطبيقنا الآن واستمتع بالتجربة الكاملة على هاتفك مع إشعارات فورية لكل تحديث
+                <p style="color: #ccc; margin: 20px 0;">
+                    حمل تطبيقنا الآن واستمتع بالتجربة الكاملة على هاتفك
                 </p>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <button class="action-button" style="padding: 18px 30px; justify-content: center;">
-                        <i class="fab fa-google-play"></i> حمل من Google Play
+                    <button class="card-button" style="width: 100%;">
+                        <i class="fab fa-google-play"></i> Google Play
                     </button>
-                    <button class="action-button" style="padding: 18px 30px; justify-content: center;">
-                        <i class="fab fa-app-store"></i> حمل من App Store
-                    </button>
-                    <button class="action-button" style="padding: 18px 30px; justify-content: center; background: linear-gradient(45deg, #333, #000);">
-                        <i class="fab fa-microsoft"></i> حمل من Microsoft Store
+                    <button class="card-button" style="width: 100%;">
+                        <i class="fab fa-app-store"></i> App Store
                     </button>
                 </div>
             </div>
@@ -1441,15 +1717,33 @@
             © 2024 منصة المستقبل الذكية - جميع الحقوق محفوظة | 
             تصميم وتطوير بفخر في الوطن العربي بواسطة فريق المبرمجين العرب | 
             الثورة التكنولوجية تبدأ من هنا! 🚀
-            <br>
-            <span style="color: #888; font-size: 1rem; margin-top: 10px; display: block;">
-                هذا الموقع هو نموذج توضيحي لإمكانيات التطوير العربي المتقدم
-            </span>
         </div>
     </footer>
 
     <script>
-        // تنشيط التنقل
+        // ========== إنشاء النجوم ==========
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // ========== التنقل ==========
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1460,113 +1754,213 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 120,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
         });
-        
-        // تشغيل الموسيقى التفاعلي
+
+        // ========== الموسيقى ==========
+        function playMusic() {
+            const trackItems = document.querySelectorAll('.track-item');
+            trackItems.forEach(item => item.classList.remove('playing'));
+            trackItems[0].classList.add('playing');
+            showNotification('🎵 الآن تشغيل: أغنية الثورة - أم كلثوم', 'music');
+        }
+
         document.querySelectorAll('.track-item').forEach(item => {
             item.addEventListener('click', function() {
                 document.querySelectorAll('.track-item').forEach(i => i.classList.remove('playing'));
                 this.classList.add('playing');
-                
                 const songName = this.querySelector('span').textContent;
                 showNotification(`🎵 الآن تشغيل: ${songName}`, 'music');
             });
         });
-        
-        // محاكاة الدردشة مع الذكاء الاصطناعي
-        const chatInput = document.querySelector('.chat-input input');
-        const chatMessages = document.querySelector('.chat-messages');
-        
-        if (chatInput && chatMessages) {
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' && this.value.trim()) {
-                    sendMessage();
-                }
-            });
+
+        // ========== الذكاء الاصطناعي ==========
+        const aiResponses = [
+            "هذا سؤال ممتاز! بناءً على تحليلي، يمكنني القول أن...",
+            "شكراً لسؤالك. لدي المعلومات التالية حول هذا الموضوع...",
+            "أعتقد أن هذا يحتاج إلى بعض التوضيح. اسمح لي أن أشرح...",
+            "حسناً، دعني أفكر في هذا. بناءً على البيانات المتاحة...",
+            "هذا موضوع شيق! إليك ما وجدته من مصادر موثوقة..."
+        ];
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
             
-            document.querySelector('.ai-chat .action-button').addEventListener('click', sendMessage);
+            if (!input.value.trim()) return;
             
-            function sendMessage() {
-                const userMessage = chatInput.value.trim();
-                if (!userMessage) return;
+            // رسالة المستخدم
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.textContent = input.value;
+            messages.appendChild(userMessage);
+            
+            input.value = '';
+            
+            // رد الذكاء الاصطناعي
+            setTimeout(() => {
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message ai';
+                aiMessage.textContent = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+                messages.appendChild(aiMessage);
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+            
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function startChat() {
+            showNotification('🤖 جاري تحميل المساعد الذكي...', 'ai');
+            document.querySelector('.ai-chat').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ========== المنتدى ==========
+        function joinForum() {
+            showNotification('👥 جاري انضمامك لمجتمع المنتدى الآمن...', 'forum');
+            setTimeout(() => {
+                showNotification('✅ تم انضمامك بنجاح! مرحباً بك في مجتمعنا', 'success');
+            }, 1500);
+        }
+
+        // ========== الفيديو ==========
+        function uploadVideo() {
+            showNotification('🎬 جاري رفع ملف الفيديو للتحرير الذكي...', 'video');
+            
+            setTimeout(() => {
+                showNotification('✅ تم رفع الفيديو بنجاح! جاري التحليل...', 'success');
                 
-                const userMsgDiv = document.createElement('div');
-                userMsgDiv.className = 'message user';
-                userMsgDiv.textContent = userMessage;
-                chatMessages.appendChild(userMsgDiv);
-                
-                chatInput.value = '';
-                
-                // محاكاة رد الذكاء الاصطناعي
                 setTimeout(() => {
-                    const aiResponses = [
-                        "هذا سؤال ممتاز! بناءً على تحليلي، يمكنني القول أن...",
-                        "شكراً لسؤالك. لدي المعلومات التالية حول هذا الموضوع...",
-                        "أعتقد أن هذا يحتاج إلى بعض التوضيح. اسمح لي أن أشرح...",
-                        "حسناً، دعني أفكر في هذا. بناءً على البيانات المتاحة...",
-                        "هذا موضوع شيق! إليك ما وجدته من مصادر موثوقة...",
-                        "لقد بحثت في قاعدة بياناتي، وهذه هي الإجابة الدقيقة...",
-                        "سؤال مهم! دعني أقدم لك تحليلاً شاملاً بناءً على أحدث البيانات..."
-                    ];
-                    
-                    const aiMsgDiv = document.createElement('div');
-                    aiMsgDiv.className = 'message ai';
-                    aiMsgDiv.textContent = aiResponses[Math.floor(Math.random() * aiResponses.length)];
-                    chatMessages.appendChild(aiMsgDiv);
-                    
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 1000);
-                
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+                    showNotification('✨ اكتمل تحليل الفيديو! جاهز للنشر', 'success');
+                    document.querySelectorAll('.progress-fill').forEach(bar => {
+                        bar.style.width =                }, 2000);
+            }, 1500);
         }
-        
-        // تحديث عدد المشاهدين بشكل حي
-        function updateViewers() {
-            const viewersElement = document.getElementById('viewersCount');
-            if (viewersElement) {
-                let viewersText = viewersElement.textContent;
-                let viewers = parseInt(viewersText.replace('K', '000').replace('.', '')) || 68500;
-                viewers += Math.floor(Math.random() * 200) - 80;
-                if (viewers < 65000) viewers = 65000;
-                if (viewers > 75000) viewers = 75000;
-                viewersElement.textContent = (viewers / 1000).toFixed(1) + 'K';
-            }
+
+        function togglePlatform(element) {
+            element.classList.toggle('active');
+            const platformName = element.querySelector('span').textContent;
+            showNotification(
+                '100%';
+                    });
+                }, 2000);
+            }, 1500);
         }
-        
-        // تحديثات قسم "هذه اللحظة"
-        function updateMomentStats() {
-            document.querySelectorAll('.moment-stat-number').forEach(stat => {
-                const parentCard = stat.closest('.moment-card');
-                if (parentCard.classList.contains('finance')) {
-                    if (stat.textContent.includes('%')) {
-                        let value = parseFloat(stat.textContent);
-                        value += (Math.random() * 0.3 - 0.15);
-                        stat.textContent = value.toFixed(1) + '%';
-                        stat.style.color = value >= 0 ? '#2ecc71' : '#e74c3c';
-                    } else if (stat.textContent.includes('$')) {
-                        let value = parseFloat(stat.textContent.replace('$', ''));
-                        value += (Math.random() * 0.5 - 0.25);
-                        stat.textContent = '$' + value.toFixed(1);
-                    }
-                } else if (parentCard.classList.contains('trend')) {
-                    if (stat.textContent.includes('M')) {
-                        let value = parseFloat(stat.textContent);
-                        value += (Math.random() * 0.1);
-                        stat.textContent = value.toFixed(1) + 'M';
-                    }
-                }
+
+        function togglePlatform(element) {
+            element.classList.toggle('active');
+            const platformName = element.querySelector('span').textContent;
+            showNotification(
+                element.classList.contains('active') 
+                    ? `✅ تم تفعيل النشر على ${platformName}`
+                    : `❌ element.classList.contains('active') 
+                    ? `✅ تم تفعيل النشر على ${platformName}`
+                    : `❌ تم إلغاء النشر على ${platformName}`,
+ تم إلغاء النشر على ${platformName}`,
+                element.classList.contains('active') ? 'success' : 'info'
+            );
+        }
+
+        function publishVideo() {
+            showNotification('🚀 بدء النشر الذكي على المنصات المحددة...', '                element.classList.contains('active') ? 'success' : 'info'
+            );
+        }
+
+        function publishVideo() {
+            showNotification('🚀 بدء النشر الذكي على المنصات المحددة...', 'video');
+            
+            const platformsvideo');
+            
+            const platforms = document.querySelectorAll = document.querySelectorAll('.platform.active');
+('.platform.active');
+            platforms.forEach((platform,            platforms.forEach((platform, index) => {
+                setTimeout(() => {
+                    platform.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        platform.style.animation = '';
+                    }, 500);
+                }, index *  index) => {
+                setTimeout(() => {
+                    platform.style.animation = 'pulse 0.5s';
+                    setTimeout(() => {
+                        platform.style.animation = '';
+                    }, 500);
+                }, index * 500);
             });
+            
+            setTimeout(() => {
+                showNotification('🎉 تم النشر بنجاح على جميع المنصات!500);
+            });
+            
+            setTimeout(() => {
+                showNotification('🎉 تم النشر بنجاح على جميع المنصات!', 'success');
+            }, platforms.length * ', 'success');
+            }, platforms.length * 500 + 1000);
+500 + 1000);
         }
-        
-        // تفاصيل قسم "هذه اللحظة"
-        function showMomentDetails(category) {
-            const categoryNames = {
+
+        // ========== التعليم ==========
+        function enrollCourse(courseId) {
+            const courseNames        }
+
+        // ========== التعليم ==========
+        function enrollCourse(courseId) {
+            const courseNames = {
+                ' = {
+                'ai': 'الai': 'الذكذكاء الاصطناعي للمبتدئين',
+                'اء الاصطناعي للمبتدئين',
+                'web': 'برمجة تطبيweb': 'برمجة تطبيقات الويب'
+            };
+            
+           قات الويب'
+            };
+            
+            showNotification(` showNotification(`🎓 جاري تسجيلك في دورة "${courseNames[courseId]}"...🎓 جاري تسجيلك في دورة "${courseNames[courseId]}"...`, 'education');
+            
+            const card = event.currentTarget;
+            card.style.background = 'rgba(`, 'education');
+            
+            const card = event.currentTarget;
+            card.style.background = 'rgba(76, 175, 80, 0.3)';
+            
+            setTimeout(() => {
+                show76, 175, 80, 0.3)';
+            
+            setTimeout(() => {
+                showNotification(`✅ تم تسجيلك بنNotification(`✅ تم تسجيلك بنجاح في دورة "${courseNames[courseId]}"!`, 'success');
+                setTimeout(() => {
+                    card.style.background = '';
+جاح في دورة "${courseNames[courseId]}"!`, 'success');
+                setTimeout(() => {
+                    card.style.background = '';
+                }, 2000);
+            }, 150                }, 2000);
+            },0);
+        }
+
+        function 1500);
+        }
+
+ exploreCourses() {
+            showNotification('📚 جاري تحميل جميع الدورات المتاحة...',        function exploreCourses() {
+            showNotification('📚 جاري تحميل جميع الدورات المتاحة...', 'education');
+        }
+
+        'education');
+        }
+
+        // ========== هذه اللحظة ==========
+        function showMoment(category) {
+ // ========== هذه اللحظة ==========
+        function showMoment(category) {
+            const            const categoryNames = {
                 finance: 'المال والبورصات',
                 politics: 'السياسة والتطورات',
                 art: 'الفن والسينما',
@@ -1575,185 +1969,202 @@
                 trend: 'ترند اللحظة'
             };
             
-            const categoryInfo = {
-                finance: '📈 ارتفاع مؤشر EGX30 بنسبة 2.8% في تعاملات اليوم مع صعود أسهم البنوك والاتصالات.',
-                politics: '🏛️ انعقاد القمة العربية الطارئة في الرياض لبحث التطورات الإقليمية.',
-                art: '🎬 فيلم "حلم القاهرة" يحصد جائزة أفضل فيلم عربي في مهرجان كان السينمائي.',
-                sports: '⚽ فوز المنتخب المصري على المغرب 3-1 وتأهله إلى نهائي كأس الأمم الأفريقية.',
-                conflict: '🕊️ توقيع اتفاقية وقف إطلاق النار في منطقة النزاع بعد مفاوضات ماراثونية.',
-                trend: '🔥 #تحدي_المستقبل يتصدر الترند العربي بمشاركة 2.5 مليون مستخدم.'
-            };
-            
-            showNotification(`📢 ${categoryInfo[category]}`, category);
+            showNotification(`📊 عرض تفاصيل ${categoryNames[category]}...`, 'info');
         }
-        
-        // تحديث اللحظة
+
         function refreshMoments() {
             showNotification('🔄 جاري تحديث بيانات "هذه اللحظة"...', 'info');
             
-            // محاكاة التحديث
+            setTimeout(() => categoryNames = {
+                finance: 'المال والبورصات',
+                politics: 'السياسة والتطورات',
+                art: 'الفن والسينما',
+                sports: 'الرياضة',
+                conflict: 'الصراعات في العالم',
+                trend: 'ترند اللحظة'
+            };
+            
+            showNotification(`📊 عرض تفاصيل ${categoryNames[category]}...`, 'info');
+        }
+
+        function refreshMoments() {
+            showNotification('🔄 جاري تحديث بيانات "هذه اللحظة"...', 'info');
+            
             setTimeout(() => {
-                updateMomentStats();
-                showNotification('✅ تم تحديث بيانات "هذه اللحظة" بنجاح!', 'success');
+                {
+                showNotification('✅ تم تحديث البيانات بنجاح!', 'success');
                 
-                // تأثير بصري على البطاقات
-                document.querySelectorAll('.moment-card').forEach(card => {
-                    card.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        card.style.transform = 'scale(1)';
-                    }, 300);
+                // تحديث الأرقام عشوائياً
+                document.querySelectorAll('.moment-stats span').forEach(span => {
+                    if (span.textContent.includes('%')) {
+                        const value = parseFloat(span.text showNotification('✅ تم تحديث البيانات بنجاح!', 'success');
+                
+                // تحديث الأرقام عشوائياً
+                document.querySelectorAll('.moment-stats span').forEach(span => {
+                    if (span.textContent.includes('%')) {
+                        const value = parseFloat(span.textContent);
+                        span.textContent = (value + (Math.random() * 0.5 - 0.25)).toFixed(1) + '%';
+                    } elseContent);
+                        span.textContent = (value + (Math.random() * 0.5 - 0.25)).toFixed(1) + '%';
+                    } else if (span.textContent.includes('$')) {
+ if (span.textContent.includes('$')) {
+                        const value = parseFloat(span.textContent.replace('$', ''));
+                        span.textContent = '$' + (value + (Math.random                        const value = parseFloat(span.textContent.replace('$', ''));
+                        span.textContent = '$' + (value + (Math.random() * 0.5 - () * 0.5 - 0.25)).toFixed(1);
+                    } else if (span.textContent.includes('K')) {
+                        const0.25)).toFixed(1);
+                    } else if (span.textContent.includes('K')) {
+ value = parseFloat(span.textContent                        const value = parseFloat(span);
+                        span.textContent = (value + (Math.random() * 0.2 - 0.1))..textContent);
+                        span.textContent = (value + (Math.random() * 0.2 - 0.1)).toFixed(1) + 'K';
+                    }
+               toFixed(1) + 'K';
+                    }
                 });
             }, 1500);
         }
-        
-        // إشعارات متقدمة
+
+        });
+            }, 1500);
+        }
+
+        // ========== تحديث عدد المشاهدين ==========
+        function updateViewers() // ========== تحديث عدد المشاهدين ==========
+        function updateViewers() {
+            const viewersElement = {
+            const viewersElement = document.getElementById document.getElementById('viewersCount');
+            if (viewersElement) {
+                let viewers = parseFloat(viewersElement('viewersCount');
+            if (viewersElement) {
+                let viewers = parseFloat(viewersElement.text.textContent.replace('K', ''Content.replace('K', '')) || 68.5;
+                viewers += (Math.random() * )) || 68.5;
+                viewers += (Math.random() * 0.0.5 - 0.25);
+                if (viewers < 65) viewers = 655 - 0.25);
+                if (viewers < 65) viewers = 65;
+                if (viewers;
+                if (viewers >  > 72) viewers = 72;
+                viewersElement.textContent = viewers.toFixed(172) viewers = 72;
+                viewersElement.textContent = viewers.toFixed(1) + 'K';
+            }
+        }
+
+        // ========== الإشعارات =========) + 'K';
+            }
+        }
+
+        // ========== الإشعارات ==========
         function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
-            const icons = {
-                music: '🎵',
-                info: 'ℹ️',
-                success: '✅',
-                finance: '💰',
-                politics: '🏛️',
-                art: '🎨',
-                sports: '⚽',
-                conflict: '🕊️',
-                trend: '🔥'
-            };
+            notification.className=
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification = 'notification';
+            notification.innerHTML = message;
             
-            const icon = icons[type] || '📢';
+            // تلوين الإشعار حسب النوع
+            if (type.className = 'notification';
+            notification.innerHTML = message;
             
-            notification.style.cssText = `
-                position: fixed;
-                top: 120px;
-                right: 30px;
-                background: ${getNotificationColor(type)};
-                color: white;
-                padding: 20px 30px;
-                border-radius: 15px;
-                z-index: 10000;
-                animation: slideInRight 0.4s ease, slideOutRight 0.4s ease 2.6s;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                max-width: 400px;
-                font-size: 1.1rem;
-                line-height: 1.5;
-                border-right: 5px solid ${getNotificationBorderColor(type)};
-                display: flex;
-                align-items: center;
-                gap: 15px;
-            `;
+            // تلوين الإشعار حسب النوع
+            if (type === 'music') {
+                notification.style.background = 'linear-gradient(135deg, var === 'music') {
+                notification.style.background = 'linear-gradient(135deg, var(--music(--music), #6a1b9a)';
+                notification.style.borderRightColor = 'var(--music)';
+            }), #6a1b9a)';
+                notification.style.borderRightColor = 'var(--music)';
+            } else if (type === 'ai') {
+                notification.style.background else if (type === 'ai') {
+                notification.style.background = 'linear-gradient(135deg, var(-- = 'linear-gradient(135deg, var(--ai), #1b5e20)';
+                notification.style.borderRightColor = 'varai), #1b5e20)';
+                notification.style.borderRightColor = 'var(--ai)';
+            }(--ai)';
+            } else if else if (type === 'video') {
+                notification.style.background = 'linear-gradient(135deg, var (type === 'video') {
+                notification.style.background = 'linear-gradient(135deg, var(--video(--video), #f50057)';
+                notification.style.borderRightColor = 'var(--video)), #f50057)';
+                notification.style.borderRightColor = 'var(--video)';
+           ';
+            } else if (type === 'education') {
+                notification.style.background = 'linear-gradient(135deg } else if (type === 'education') {
+                notification.style.background = 'linear-gradient(135deg, var(--education), #2e7d32)';
+                notification.style.borderRightColor = 'var(--, var(--education), #2e7d32)';
+                notification.style.borderRightColor = 'var(--education)';
+            } else if (type === 'forum') {
+                notification.style.background =education)';
+            } else if (type === 'forum') {
+                notification.style.background = 'linear 'linear-gradient(135deg, var(--forum), #0d47a1)';
+                notification.style.borderRightColor = 'var(--forum)-gradient(135deg, var(--forum), #0d47a1)';
+                notification.style.borderRightColor = 'var(--forum)';
+            } else if (type === 'success') {
+                notification.style.background = 'linear-gradient(135deg, var(--success), #27ae';
+            } else if (type === 'success') {
+                notification.style.background = 'linear-gradient(135deg, var(--success), #27ae60)';
+               60)';
+                notification.style.borderRightColor = 'var(--success)';
+            }
             
-            notification.innerHTML = `
-                <span style="font-size: 1.8rem;">${icon}</span>
-                <span>${message}</span>
-            `;
+            document notification.style.borderRightColor = 'var(--success)';
+            }
             
             document.body.appendChild(notification);
             
             setTimeout(() => {
                 notification.remove();
             }, 3000);
-        }
-        
-        function getNotificationColor(type) {
-            const colors = {
-                music: 'linear-gradient(135deg, #9c27b0, #6a1b9a)',
-                info: 'linear-gradient(135deg, #2196f3, #0d47a1)',
-                success: 'linear-gradient(135deg, #4caf50, #1b5e20)',
-                finance: 'linear-gradient(135deg, #2ecc71, #27ae60)',
-                politics: 'linear-gradient(135deg, #e74c3c, #c0392b)',
-                art: 'linear-gradient(135deg, #9b59b6, #8e44ad)',
-                sports: 'linear-gradient(135deg, #3498db, #2980b9)',
-                conflict: 'linear-gradient(135deg, #e67e22, #d35400)',
-                trend: 'linear-gradient(135deg, #1abc9c, #16a085)'
-            };
-            return colors[type] || colors.info;
-        }
-        
-        function getNotificationBorderColor(type) {
-            const colors = {
-                music: '#6a1b9a',
-                info: '#0d47a1',
-                success: '#1b5e20',
-                finance: '#27ae60',
-                politics: '#c0392b',
-                art: '#8e44ad',
-                sports: '#2980b9',
-                conflict: '#d35400',
-                trend: '#16a085'
-            };
-            return colors[type] || colors.info;
-        }
-        
-        // إضافة أنماط للرسوم المتحركة
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-            @keyframes tvScan {
-                0% { transform: translateY(-100%) rotate(45deg); }
-                100% { transform: translateY(100%) rotate(45deg); }
-            }
-            @keyframes shimmer {
-                0% { background-position: -500px 0; }
-                100% { background-position: 500px 0; }
-            }
-            @keyframes float {
-                0%, 100% { transform: translateY(0) rotate(0); }
-                33% { transform: translateY(-20px) rotate(2deg); }
-                66% { transform: translateY(-10px) rotate(-2deg); }
-            }
-            @keyframes pulse {
-                0% { transform: scale(1); opacity: 1; }
-                50% { transform: scale(1.1); opacity: 0.8; }
-                100% { transform: scale(1); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // تحديثات حية
-        setInterval(updateViewers, 4000);
-        setInterval(updateMomentStats, 10000);
-        
-        // بدء الرحلة
-        window.addEventListener('load', () => {
+       .body.appendChild(notification);
+            
             setTimeout(() => {
-                showNotification('🚀 مرحباً بك في منصة المستقبل الذكية! ابدأ رحلتك الآن.', 'success');
-                
-                // تحميل البيانات الأولية
-                setTimeout(() => {
-                    refreshMoments();
-                }, 2000);
+                notification.remove();
+            }, 3000);
+        }
+
+ }
+
+        // ========== التهيئة ==========
+        window.addEventListener('load', () => {
+            createStars        // ========== التهيئة ==========
+        window.addEventListener('load', () => {
+            createStars();
+            
+            // تحديث();
+            
+            // تحديثات حات حية
+            setInterval(updateViewers, 500ية
+            setInterval(updateViewers, 5000);
+            
+            // إشعار الترحيب
+            setTimeout(() => {
+                showNotification('🚀0);
+            
+            // إشعار الترحيب
+            setTimeout(() => {
+                showNotification(' مرحباً بك في منصة المستق🚀 مرحباً بك في منصة المستقبل الذكية!', 'success');
+            }, بل الذكية!', 'success');
             }, 1000);
+            
+            // تحميل أول أغنية
+            setTimeout(playMusic1000);
+            
+            // تحميل أول أغنية
+            setTimeout(playMusic, , 2000);
         });
-        
-        // تأثيرات عند التمرير
+
+        // ========== تأثيرات التمرير ==========
+        window2000);
+        });
+
+        // ========== تأثيرات التمرير ==========
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero, .moment-section');
-            
-            parallaxElements.forEach(el => {
-                const speed = 0.5;
-                const yPos = -(scrolled * speed);
-                el.style.backgroundPosition = `center ${yPos}px`;
-            });
+           .addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const stars = document.querySelector('.stars');
+            stars.style.transform = `translateY(${scrolled * 0. const stars = document.querySelector('.stars');
+            stars.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
-        
-        // تأثيرات تفاعلية للأزرار
-        document.querySelectorAll('.action-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.05)';
-            });
-            
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
+    </script>
+</body>
+5}px)`;
         });
     </script>
 </body>
